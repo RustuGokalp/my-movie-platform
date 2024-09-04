@@ -13,7 +13,7 @@ const Header = () => {
         <nav className={styles.navigationMenu}>
           <Link href="/">Movies</Link>
           <Link href="/">Series</Link>
-          <Link href="/">Kids</Link>
+          <Link href="/actors">Actors</Link>
         </nav>
       </div>
     </header>
