@@ -20,9 +20,26 @@
 
 .overview {
   font-size: 24px;
-  max-width: 50ch;
 }
-
+.infoWrapper {
+  font-size: 20px;
+  display: flex;
+}
+.infoWrapper div:not(:first-child) {
+  margin-left: 30px;
+}
+.revenueWrapper {
+  margin-left: auto !important;
+}
+.filmCategoryWrapper {
+  display: flex;
+  gap: 20px;
+}
+.category {
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 10px;
+}
 .shortOverview {
   display: -webkit-box;
   -webkit-line-clamp: 2;
