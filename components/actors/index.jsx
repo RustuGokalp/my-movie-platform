@@ -20,6 +20,7 @@ const Actors = ({ actors = [] }) => {
               src={`https://image.tmdb.org/t/p/w500${profile_path}`}
               width={150}
               height={300}
+              className={styles.actorImage}
               alt={name}
               unoptimized
             />
@@ -29,8 +30,8 @@ const Actors = ({ actors = [] }) => {
               <div>{known_for_department}</div>
 
               {movies.length > 0 && (
-                <div>
-                  <div>Movies:</div>
+                <div className={styles.moviesWrapper}>
+                  <strong>Movies:</strong>
                   {movies.map((movie, index) => (
                     <div key={index}>{movie.title}</div>
                   ))}
@@ -38,8 +39,8 @@ const Actors = ({ actors = [] }) => {
               )}
 
               {tvShows.length > 0 && (
-                <div>
-                  <div>TV Shows:</div>
+                <div className={styles.tvShowsWrapper}>
+                  <strong>TV Shows:</strong>
                   {tvShows.map((tv, index) => (
                     <div key={index}>{tv.name}</div>
                   ))}

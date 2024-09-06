@@ -9,3 +9,11 @@
   gap: 10px;
   width: 400px;
 }
+.moviesWrapper,
+.tvShowsWrapper {
+  margin-top: 10px;
+}
+.actorImage {
+  border-radius: 7px;
+  margin-right: 5px;
+}
