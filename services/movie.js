@@ -24,6 +24,9 @@ const getCategories = async () => {
 const getActors = async () => {
   return fetchMovieApi("person/popular");
 };
+const getActorDetail = async (id) => {
+  return fetchMovieApi(`person/${id}`);
+};
 
 const getMovie = async (movieId) => {
   return fetchMovieApi(`movie/${movieId}`);
@@ -36,5 +39,6 @@ export {
   getTopRatedMovies,
   getCategories,
   getActors,
+  getActorDetail,
   getMovie,
 };
