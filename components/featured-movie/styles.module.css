@@ -17,6 +17,9 @@
   line-height: 72px;
   max-width: 25ch;
 }
+.tagLine {
+  font-size: 27px;
+}
 
 .overview {
   font-size: 24px;
@@ -28,8 +31,13 @@
 .infoWrapper div:not(:first-child) {
   margin-left: 30px;
 }
-.revenueWrapper {
-  margin-left: auto !important;
+.timeWrapper {
+  display: flex;
+  align-items: center;
+}
+.runTime {
+  margin-left: 5px;
+  font-size: 20px;
 }
 .filmCategoryWrapper {
   display: flex;

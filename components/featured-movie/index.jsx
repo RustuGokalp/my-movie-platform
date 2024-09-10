@@ -34,20 +34,27 @@ const formatRevenue = (value) => {
 const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
   const {
     poster_path,
+    runtime,
     title,
+    tagline,
     overview,
     original_title,
+    original_language,
     genres,
     release_date,
     vote_average,
     vote_count,
-    revenue,
   } = movie;
 
   return (
     <div className={styles.movieWrapper}>
       <h1 className={styles.movieTitle}>{title}</h1>
-      <h3 className={styles.originalTitle}>Original Title: {original_title}</h3>
+      {tagline && params.id && <i className={styles.tagLine}>"{tagline}"</i>}
+      {original_language != "en" && (
+        <h3 className={styles.originalTitle}>
+          Original Title: {original_title}
+        </h3>
+      )}
       <div className={styles.infoWrapper}>
         <div>
           <strong>Release Date: </strong>
@@ -59,13 +66,13 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
             {vote_average.toFixed(1)}/10 ({vote_count})
           </span>
         </div>
-        {params.id && (
-          <div className={styles.revenueWrapper}>
-            <strong>Revenue: </strong>
-            <span>${formatRevenue(revenue)}</span>
-          </div>
-        )}
       </div>
+      {params.id && (
+        <div className={styles.timeWrapper}>
+          <h3>Time: </h3>
+          <p className={styles.runTime}> {runtime} mins</p>
+        </div>
+      )}
       <p
         className={`${styles.overview} ${
           isCompact ? styles.shortOverview : ""
