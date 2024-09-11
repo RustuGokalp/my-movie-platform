@@ -1,0 +1,16 @@
+.actorDetailWrapper {
+  display: flex;
+  margin-bottom: 30px;
+}
+.actorImage {
+  margin-right: 20px;
+}
+.actorsJobs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filmTitle {
+  text-align: center;
+}

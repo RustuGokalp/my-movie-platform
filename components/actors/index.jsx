@@ -1,9 +1,18 @@
-import React from "react";
+"use client";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 
 const Actors = ({ actors = [] }) => {
+  const handleClick = (actor) => (event) => {
+    localStorage.setItem(
+      "actorData",
+      JSON.stringify({
+        id: actor.id,
+        known_for: actor.known_for,
+      })
+    );
+  };
   return (
     <div className={styles.actorsWrapper}>
       {actors.map((actor) => {
@@ -64,7 +73,11 @@ const Actors = ({ actors = [] }) => {
                   </div>
                 )}
               </div>
-              <Link href={`/actors/${id}`} className={styles.detailButton}>
+              <Link
+                href={`/actors/${id}`}
+                className={styles.detailButton}
+                onClick={handleClick(actor)}
+              >
                 Go To Detail
               </Link>
             </div>
