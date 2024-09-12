@@ -5,6 +5,11 @@ import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
 
 const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
+  const formatRuntime = (runtime) => {
+    const hours = Math.floor(runtime / 60);
+    const minutes = runtime % 60;
+    return `${hours}h ${minutes}m`;
+  };
   const {
     poster_path,
     runtime,
@@ -43,7 +48,7 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
       {params.id && (
         <div className={styles.timeWrapper}>
           <h3>Time: </h3>
-          <p className={styles.runTime}> {runtime} mins</p>
+          <p className={styles.runTime}> {formatRuntime(runtime)} </p>
         </div>
       )}
       <p
