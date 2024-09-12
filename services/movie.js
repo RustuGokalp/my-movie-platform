@@ -27,7 +27,6 @@ const getActors = async () => {
 const getActorDetail = async (id) => {
   return fetchMovieApi(`person/${id}`);
 };
-
 const getMovie = async (movieId) => {
   return fetchMovieApi(`movie/${movieId}`);
 };

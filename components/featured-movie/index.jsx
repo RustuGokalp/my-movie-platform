@@ -8,6 +8,9 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
+    if (hours === 0) {
+      return `${minutes}m`;
+    }
     return `${hours}h ${minutes}m`;
   };
   const {
