@@ -41,7 +41,7 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
         <div>
           <strong>Rating: </strong>
           <span>
-            {vote_average.toFixed(1)}/10 ({vote_count})
+            ⭐ {vote_average.toFixed(1)}/10 ({vote_count})
           </span>
         </div>
       </div>

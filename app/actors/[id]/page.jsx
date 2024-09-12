@@ -1,9 +1,16 @@
 import ActorDetailContainer from "@/containers/actorDetail/index";
-import { getActorDetail } from "@/services/movie";
+import { getActors, getActorDetail } from "@/services/movie";
 
 const ActorDetail = async ({ params }) => {
   const actorDetail = await getActorDetail(params.id);
-  return <ActorDetailContainer actorDetail={actorDetail} />;
+  const { results } = await getActors();
+  const findActor = results.find((actor) => actor?.id == params?.id);
+  return (
+    <ActorDetailContainer
+      actorDetail={actorDetail}
+      actorOriginalNameAndJobs={findActor}
+    />
+  );
 };
 
 export default ActorDetail;
