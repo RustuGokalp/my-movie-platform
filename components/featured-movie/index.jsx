@@ -2,34 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
-
 import styles from "./styles.module.css";
-
-const formatRevenue = (value) => {
-  let formattedValue;
-  let unit;
-
-  switch (true) {
-    case value >= 1_000_000_000:
-      unit = "B";
-      formattedValue = (value / 1_000_000_000).toFixed(1);
-      break;
-    case value >= 1_000_000:
-      unit = "M";
-      formattedValue = (value / 1_000_000).toFixed(1);
-      break;
-    case value >= 1_000:
-      unit = "K";
-      formattedValue = (value / 1_000).toFixed(1);
-      break;
-    default:
-      unit = "";
-      formattedValue = value?.toString();
-      break;
-  }
-
-  return `${formattedValue}${unit}`;
-};
 
 const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
   const {
