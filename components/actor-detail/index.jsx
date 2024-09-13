@@ -47,7 +47,7 @@ const ActorDetail = ({ actorDetail, actorOriginalNameAndJobs }) => {
         <h1 className={styles.knownForTitle}>Known For</h1>
         <div className={styles.actorsJobs}>
           {known_for.map((film) => (
-            <div className={styles.filmCardWrapper}>
+            <div className={styles.filmCardWrapper} key={film.id}>
               <Link href={`/movie/${film.id}`}>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
