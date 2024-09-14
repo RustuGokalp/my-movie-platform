@@ -14,6 +14,7 @@ const Header = () => {
           <Link href="/">Movies</Link>
           <Link href="/">Series</Link>
           <Link href="/actors">Actors</Link>
+          <Link href="/login">Login</Link>
         </nav>
       </div>
     </header>
