@@ -14,7 +14,7 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
     return `${hours}h ${minutes}m`;
   };
   const {
-    poster_path,
+    backdrop_path,
     runtime,
     title,
     tagline,
@@ -87,7 +87,7 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
           fill
         />
