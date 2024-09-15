@@ -35,12 +35,6 @@ const createRequestToken = async () => {
   }
 };
 
-// Redirect User To TMDB
-const handleAuthorization = (requestToken) => {
-  const redirectUrl = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:3000/approved`; // Geri döneceği URL
-  window.open(redirectUrl, "_blank");
-};
-
 // Validate Request Token (Login)
 const validateWithLogin = async (username, password, requestToken) => {
   try {
@@ -65,7 +59,7 @@ const validateWithLogin = async (username, password, requestToken) => {
   }
 };
 
-// Create Session ID ve set it to localStorage
+// Create Session ID and set it to localStorage
 const createSession = async (requestToken) => {
   try {
     const response = await axios.post(
@@ -173,7 +167,6 @@ export {
   getActorDetail,
   getMovie,
   createRequestToken,
-  handleAuthorization,
   validateWithLogin,
   createSession,
   addToWatchlist,

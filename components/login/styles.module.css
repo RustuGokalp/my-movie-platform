@@ -1,0 +1,65 @@
+.loginPage {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.inputField:focus {
+  border-color: #0070f3;
+  outline: none;
+}
+
+.errorText {
+  color: red;
+  margin: 10px 0;
+}
+
+.submitButton {
+  width: 25%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0070f3;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #005bb5;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
