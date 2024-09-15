@@ -69,11 +69,18 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
         ))}
       </div>
       <div className={styles.actionButtons}>
-        <Link className={styles.playButton} href={`/movie/${movie.id}`}>
-          Play
-        </Link>
-        <button className={styles.addButton}>
+        {!params.id && (
+          <Link className={styles.goToDetailButton} href={`/movie/${movie.id}`}>
+            Go To Detail
+          </Link>
+        )}
+        <button className={styles.addWatchlistButton}>
           <FaPlus />
+          <p className={styles.addWatchlistBtnText}>Add To Watchlist</p>
+        </button>
+        <button className={styles.addFavoritesButton}>
+          <FaPlus />
+          <p className={styles.addFavoritesBTnText}>Add To Favorites</p>
         </button>
       </div>
       <div className={styles.moviePoster}>

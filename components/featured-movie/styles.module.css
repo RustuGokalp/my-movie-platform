@@ -60,24 +60,29 @@
   gap: 12px;
 }
 
-.addButton {
+.addWatchlistButton,
+.addFavoritesButton {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid #eee;
   border-radius: 999px;
-  width: 62px;
+  width: 15%;
   height: 62px;
   color: #eee;
+  padding: 10px;
 }
-
-.playButton {
+.addWatchlistBtnText,
+.addFavoritesBTnText {
+  margin-left: 10px;
+}
+.goToDetailButton {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #eee;
   color: #222;
-  width: 300px;
+  width: 33%;
   border-radius: 9999px;
   font-size: 20px;
   font-weight: 700;
