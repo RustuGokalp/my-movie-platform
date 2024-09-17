@@ -77,6 +77,7 @@ const Login = () => {
                 name="username"
                 placeholder="Username"
                 className={styles.inputField}
+                maxLength={14}
               />
               <ErrorMessage
                 name="username"
@@ -95,6 +96,7 @@ const Login = () => {
                 placeholder="Password"
                 type="password"
                 className={styles.inputField}
+                maxLength={14}
               />
               <ErrorMessage
                 name="password"
