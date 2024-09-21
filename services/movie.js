@@ -86,9 +86,9 @@ const createSession = async (requestToken) => {
     });
     const accountId = accountResponse.data.id;
 
-    const { setAccountId, setSessionId } = useAuthStore.getState();
-    setAccountId(accountId);
-    setSessionId(sessionId);
+    const { setAccountID, setSessionID } = useAuthStore.getState();
+    setAccountID(accountId);
+    setSessionID(sessionId);
 
     return { sessionId, accountId };
   } catch (error) {
@@ -99,9 +99,9 @@ const createSession = async (requestToken) => {
 };
 
 const addToWatchlist = async (movieId) => {
-  const { sessionId, accountId } = useAuthStore.getState();
+  const { sessionID, accountID } = useAuthStore.getState();
 
-  if (!sessionId || !accountId) {
+  if (!sessionID || !accountID) {
     throw new Error("Session ID or Account ID is missing");
   }
 
@@ -118,7 +118,7 @@ const addToWatchlist = async (movieId) => {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_AUTH}`,
         },
         params: {
-          session_id: sessionId,
+          session_id: sessionID,
         },
       }
     );

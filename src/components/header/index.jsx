@@ -3,11 +3,10 @@ import useAuthStore from "@/store/store";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { FaPlayCircle } from "react-icons/fa";
-import Avatar from "@/src/components/avatar";
+import User from "@/src/components/user";
 
 const Header = () => {
-  const { accountId } = useAuthStore();
-
+  const { accountID } = useAuthStore();
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
@@ -18,7 +17,7 @@ const Header = () => {
           <Link href="/">Movies</Link>
           <Link href="/">Series</Link>
           <Link href="/actors">Actors</Link>
-          {accountId ? <Avatar /> : <Link href="/login">Login</Link>}
+          <User accountID={accountID} />
         </nav>
       </div>
     </header>
