@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import useAuthStore from "@/store/store";
 const API_URL = "https://api.themoviedb.org/3/";
 
 const fetchMovieApi = async (pathname, query = "") => {
@@ -75,7 +75,6 @@ const createSession = async (requestToken) => {
     );
 
     const sessionId = response.data.session_id;
-    localStorage.setItem("session_id", sessionId);
 
     const accountResponse = await axios.get(`${API_URL}account`, {
       headers: {
@@ -86,7 +85,10 @@ const createSession = async (requestToken) => {
       },
     });
     const accountId = accountResponse.data.id;
-    localStorage.setItem("account_id", accountId);
+
+    const { setAccountId, setSessionId } = useAuthStore.getState();
+    setAccountId(accountId);
+    setSessionId(sessionId);
 
     return { sessionId, accountId };
   } catch (error) {
@@ -97,8 +99,7 @@ const createSession = async (requestToken) => {
 };
 
 const addToWatchlist = async (movieId) => {
-  const sessionId = localStorage.getItem("session_id");
-  const accountId = localStorage.getItem("account_id");
+  const { sessionId, accountId } = useAuthStore.getState();
 
   if (!sessionId || !accountId) {
     throw new Error("Session ID or Account ID is missing");

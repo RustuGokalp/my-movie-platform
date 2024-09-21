@@ -1,16 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import useAuthStore from "@/store/store";
+import styles from "./styles.module.css";
 import Link from "next/link";
 import { FaPlayCircle } from "react-icons/fa";
-import styles from "./styles.module.css";
 import Avatar from "@/src/components/avatar";
-const Header = () => {
-  const [accountId, setAccountId] = useState(null);
 
-  useEffect(() => {
-    const storedAccountId = localStorage.getItem("account_id") ?? null;
-    setAccountId(storedAccountId);
-  }, [accountId]);
+const Header = () => {
+  const { accountId } = useAuthStore();
+
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
