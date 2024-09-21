@@ -24,7 +24,9 @@
   align-items: center;
   gap: 30px;
 }
-
+.filmCardWrapper {
+  width: 200px;
+}
 .filmTitle {
   text-align: center;
 }

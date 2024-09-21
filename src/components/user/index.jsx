@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Avatar = ({ accountID }) => {
+const User = ({ accountID }) => {
   return (
     <div>
       {accountID ? <div>Avatar Icon</div> : <Link href="/login">Login</Link>}
@@ -9,4 +9,4 @@ const Avatar = ({ accountID }) => {
   );
 };
 
-export default Avatar;
+export default User;

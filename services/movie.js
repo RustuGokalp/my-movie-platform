@@ -107,7 +107,7 @@ const addToWatchlist = async (movieId) => {
 
   try {
     const response = await axios.post(
-      `${API_URL}account/${accountId}/watchlist`,
+      `${API_URL}account/${accountID}/watchlist`,
       {
         media_type: "movie",
         media_id: movieId,

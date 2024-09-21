@@ -1,12 +1,26 @@
 "use client";
+import { useState, useEffect } from "react";
 import useAuthStore from "@/store/store";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { FaPlayCircle } from "react-icons/fa";
 import User from "@/src/components/user";
+import HeaderLoading from "./loading";
 
 const Header = () => {
   const { accountID } = useAuthStore();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (accountID !== null) {
+      setIsLoading(false);
+    }
+  }, [accountID]);
+
+  if (isLoading) {
+    return <HeaderLoading />;
+  }
+
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
