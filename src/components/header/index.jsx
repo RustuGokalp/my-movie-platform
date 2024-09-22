@@ -12,9 +12,7 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (accountID !== null) {
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   }, [accountID]);
 
   if (isLoading) {
@@ -31,7 +29,7 @@ const Header = () => {
           <Link href="/">Movies</Link>
           <Link href="/">Series</Link>
           <Link href="/actors">Actors</Link>
-          <User accountID={accountID} />
+          <User />
         </nav>
       </div>
     </header>

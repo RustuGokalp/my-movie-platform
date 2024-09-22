@@ -98,6 +98,23 @@ const createSession = async (requestToken) => {
   }
 };
 
+const accountDetail = async (accountID) => {
+  try {
+    const response = await axios.get(`${API_URL}account/${accountID}`, {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_AUTH}`,
+      },
+    });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error) {
+    throw new Error(
+      error.response ? error.response.data.status_message : error.message
+    );
+  }
+};
+
 const addToWatchlist = async (movieId) => {
   const { sessionID, accountID } = useAuthStore.getState();
 
@@ -170,5 +187,6 @@ export {
   createRequestToken,
   validateWithLogin,
   createSession,
+  accountDetail,
   addToWatchlist,
 };
