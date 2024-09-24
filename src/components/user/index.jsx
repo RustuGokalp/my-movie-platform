@@ -5,11 +5,12 @@ import Skeleton from "@/src/components/skeleton";
 import { accountDetail } from "@/services/movie";
 import styles from "./styles.module.css";
 import useAuthStore from "@/store/store";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const User = () => {
   const [accountInfo, setAccountInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { accountID } = useAuthStore();
 
   useEffect(() => {
@@ -42,29 +43,31 @@ const User = () => {
   }
 
   const openUserInfoArea = () => {
-    setIsOpen((isOpen = !isOpen));
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <div>
       {accountInfo ? (
-        <div onClick={openUserInfoArea} style={{ position: "relative" }}>
-          <Image
-            src={`https://image.tmdb.org/t/p/w500${accountInfo?.avatar?.tmdb?.avatar_path}`}
-            width={30}
-            height={30}
-            className={styles.userImg}
-            alt={`${accountInfo.name}'s Profile Photo`}
-            unoptimized
-          />
-          {isOpen && (
-            <div className={styles.userMenu}>
-              <p>Watchlist</p>
-              <p>Favorites</p>
-              <p>Signout</p>
-            </div>
-          )}
-        </div>
+        <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+          <div onClick={openUserInfoArea} style={{ position: "relative" }}>
+            <Image
+              src={`https://image.tmdb.org/t/p/w500${accountInfo?.avatar?.tmdb?.avatar_path}`}
+              width={30}
+              height={30}
+              className={styles.userImg}
+              alt={`${accountInfo.name}'s Profile Photo`}
+              unoptimized
+            />
+            {isOpen && (
+              <div className={styles.userMenu}>
+                <Link href="/">Your Watchlist</Link>
+                <Link href="/">Your Favorites</Link>
+                <Link href="/">Sign out</Link>
+              </div>
+            )}
+          </div>
+        </OutsideClickHandler>
       ) : (
         <Link href="/login">Login</Link>
       )}
