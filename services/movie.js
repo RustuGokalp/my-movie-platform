@@ -106,7 +106,6 @@ const accountDetail = async (accountID) => {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_AUTH}`,
       },
     });
-    console.log("response", response.data);
     return response.data;
   } catch (error) {
     throw new Error(

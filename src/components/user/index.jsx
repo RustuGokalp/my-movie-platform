@@ -9,6 +9,7 @@ import useAuthStore from "@/store/store";
 const User = () => {
   const [accountInfo, setAccountInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  let [isOpen, setIsOpen] = useState(false);
   const { accountID } = useAuthStore();
 
   useEffect(() => {
@@ -40,17 +41,30 @@ const User = () => {
     );
   }
 
+  const openUserInfoArea = () => {
+    setIsOpen((isOpen = !isOpen));
+  };
+
   return (
     <div>
       {accountInfo ? (
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${accountInfo?.avatar?.tmdb?.avatar_path}`}
-          width={30}
-          height={30}
-          className={styles.userImg}
-          alt={`${accountInfo.name}'s Logo`}
-          unoptimized
-        />
+        <div onClick={openUserInfoArea} style={{ position: "relative" }}>
+          <Image
+            src={`https://image.tmdb.org/t/p/w500${accountInfo?.avatar?.tmdb?.avatar_path}`}
+            width={30}
+            height={30}
+            className={styles.userImg}
+            alt={`${accountInfo.name}'s Profile Photo`}
+            unoptimized
+          />
+          {isOpen && (
+            <div className={styles.userMenu}>
+              <p>Watchlist</p>
+              <p>Favorites</p>
+              <p>Signout</p>
+            </div>
+          )}
+        </div>
       ) : (
         <Link href="/login">Login</Link>
       )}
