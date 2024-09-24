@@ -114,6 +114,31 @@ const accountDetail = async (accountID) => {
   }
 };
 
+// Delete Session (Signout)
+const deleteSession = async (sessionId) => {
+  try {
+    const response = await axios.delete(`${API_URL}authentication/session`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_AUTH}`,
+      },
+      data: {
+        session_id: sessionId,
+      },
+    });
+
+    const { setAccountID, setSessionID } = useAuthStore.getState();
+    setAccountID(null);
+    setSessionID(null);
+    localStorage.removeItem("auth-storage");
+
+    return response.data;
+  } catch (error) {
+    throw new Error(
+      error.response ? error.response.data.status_message : error.message
+    );
+  }
+};
+
 const addToWatchlist = async (movieId) => {
   const { sessionID, accountID } = useAuthStore.getState();
 
@@ -187,5 +212,6 @@ export {
   validateWithLogin,
   createSession,
   accountDetail,
+  deleteSession,
   addToWatchlist,
 };

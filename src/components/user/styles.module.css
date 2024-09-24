@@ -27,10 +27,10 @@
   border-color: transparent transparent white transparent;
 }
 
-.userMenu a:not(:last-child) {
+.userMenu a {
   margin-bottom: 10px;
 }
-
-.userMenu a:last-child {
+.signOutBtn {
   margin-top: 25px;
+  cursor: pointer;
 }

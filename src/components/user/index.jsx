@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Skeleton from "@/src/components/skeleton";
-import { accountDetail } from "@/services/movie";
+import { accountDetail, deleteSession } from "@/services/movie";
 import styles from "./styles.module.css";
 import useAuthStore from "@/store/store";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -46,6 +46,22 @@ const User = () => {
     setIsOpen((prev) => !prev);
   };
 
+  const handleSignout = async () => {
+    try {
+      const authStorage = localStorage.getItem("auth-storage");
+      const sessionID = authStorage
+        ? JSON.parse(authStorage)?.state?.sessionID
+        : null;
+
+      if (sessionID) {
+        await deleteSession(sessionID);
+        setAccountInfo(null);
+      }
+    } catch (error) {
+      console.error("Logout error:", error.message);
+    }
+  };
+
   return (
     <div>
       {accountInfo ? (
@@ -63,7 +79,9 @@ const User = () => {
               <div className={styles.userMenu}>
                 <Link href="/">Your Watchlist</Link>
                 <Link href="/">Your Favorites</Link>
-                <Link href="/">Sign out</Link>
+                <p onClick={handleSignout} className={styles.signOutBtn}>
+                  Sign out
+                </p>
               </div>
             )}
           </div>
