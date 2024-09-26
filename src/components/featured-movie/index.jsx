@@ -4,7 +4,12 @@ import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
 
-const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
+const FeaturedMovie = ({
+  movie = {},
+  isCompact = true,
+  params = {},
+  movieCast = {},
+}) => {
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
@@ -82,6 +87,13 @@ const FeaturedMovie = ({ movie = {}, isCompact = true, params = {} }) => {
           <FaPlus />
           <p className={styles.addFavoritesBTnText}>Add To Favorites</p>
         </button>
+      </div>
+      <div className={styles.movieCastAreaWrapper}>
+        {movieCast?.cast?.map((cast) => (
+          <div className={styles.movieCastCardWrapper} key={cast.id}>
+            <div className={styles.castName}>{cast.name}</div>
+          </div>
+        ))}
       </div>
       <div className={styles.moviePoster}>
         <div className={styles.moviePosterOverlay}></div>
