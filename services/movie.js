@@ -199,6 +199,10 @@ const getMovie = async (movieId) => {
   return fetchMovieApi(`movie/${movieId}`);
 };
 
+const getCast = async (movieID) => {
+  return fetchMovieApi(`movie/${movieID}/credits`);
+};
+
 export {
   fetchMovieApi,
   getSingleCategory,
@@ -214,4 +218,5 @@ export {
   accountDetail,
   deleteSession,
   addToWatchlist,
+  getCast,
 };
