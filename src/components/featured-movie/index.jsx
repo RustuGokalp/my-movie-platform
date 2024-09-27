@@ -10,6 +10,10 @@ const FeaturedMovie = ({
   params = {},
   movieCast = {},
 }) => {
+  const top10Cast = movieCast?.cast
+    ?.sort((a, b) => b.popularity - a.popularity)
+    ?.slice(0, 10);
+
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
@@ -89,9 +93,18 @@ const FeaturedMovie = ({
         </button>
       </div>
       <div className={styles.movieCastAreaWrapper}>
-        {movieCast?.cast?.map((cast) => (
+        {top10Cast?.map((cast) => (
           <div className={styles.movieCastCardWrapper} key={cast.id}>
-            <div className={styles.castName}>{cast.name}</div>
+            <Image
+              unoptimized
+              src={`https://image.tmdb.org/t/p/original${cast?.profile_path}`}
+              alt={cast?.name}
+              width={200}
+              height={300}
+              className={styles.castImage}
+            />
+            <strong className={styles.castName}>{cast?.name}</strong>
+            <div className={styles.castCharacter}>{cast?.character}</div>
           </div>
         ))}
       </div>

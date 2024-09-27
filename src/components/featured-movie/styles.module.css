@@ -6,9 +6,6 @@
   margin-bottom: 56px;
 }
 
-.moviePoster {
-}
-
 .movieTitle {
   font-size: 72px;
   text-transform: uppercase;
@@ -58,6 +55,7 @@
 .actionButtons {
   display: flex;
   gap: 12px;
+  margin-bottom: 15px;
 }
 
 .addWatchlistButton,
@@ -109,4 +107,22 @@
   z-index: -2;
   max-height: 100vh;
   object-fit: cover;
+}
+
+.movieCastAreaWrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.movieCastCardWrapper {
+  width: 200px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.castImage {
+  margin-bottom: 10px;
 }
