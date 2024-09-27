@@ -92,22 +92,33 @@ const FeaturedMovie = ({
           <p className={styles.addFavoritesBTnText}>Add To Favorites</p>
         </button>
       </div>
-      <div className={styles.movieCastAreaWrapper}>
-        {top10Cast?.map((cast) => (
-          <div className={styles.movieCastCardWrapper} key={cast.id}>
-            <Image
-              unoptimized
-              src={`https://image.tmdb.org/t/p/original${cast?.profile_path}`}
-              alt={cast?.name}
-              width={200}
-              height={300}
-              className={styles.castImage}
-            />
-            <strong className={styles.castName}>{cast?.name}</strong>
-            <div className={styles.castCharacter}>{cast?.character}</div>
+      {top10Cast && (
+        <>
+          <h1>Top Casts</h1>
+          <div className={styles.movieCastAreaWrapper}>
+            {top10Cast?.map((cast) => (
+              <div className={styles.movieCastCardWrapper} key={cast?.id}>
+                <Image
+                  unoptimized
+                  src={`https://image.tmdb.org/t/p/original${cast?.profile_path}`}
+                  alt={cast?.name}
+                  width={200}
+                  height={300}
+                  className={styles.castImage}
+                />
+                <strong className={styles.castName}>{cast?.name}</strong>
+                <div className={styles.castCharacter}>{cast?.character}</div>
+              </div>
+            ))}
+            <Link
+              href={`/movie/${params.id}/casts`}
+              className={styles.showAllCast}
+            >
+              Show All Casts
+            </Link>
           </div>
-        ))}
-      </div>
+        </>
+      )}
       <div className={styles.moviePoster}>
         <div className={styles.moviePosterOverlay}></div>
         <Image

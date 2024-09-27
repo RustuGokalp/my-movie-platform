@@ -55,7 +55,7 @@
 .actionButtons {
   display: flex;
   gap: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .addWatchlistButton,
@@ -124,5 +124,16 @@
 }
 
 .castImage {
+  border-radius: 7px;
   margin-bottom: 10px;
+}
+
+.showAllCast {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 15px;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
 }
