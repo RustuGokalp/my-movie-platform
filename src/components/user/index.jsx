@@ -4,7 +4,7 @@ import Image from "next/image";
 import Skeleton from "@/src/components/skeleton";
 import { accountDetail, deleteSession } from "@/services/movie";
 import styles from "./styles.module.css";
-import useAuthStore from "@/store/store";
+import useAuthStore from "@/store/authStore";
 import OutsideClickHandler from "react-outside-click-handler";
 
 const User = () => {

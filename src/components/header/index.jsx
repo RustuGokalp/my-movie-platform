@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import useAuthStore from "@/store/store";
+import useAuthStore from "@/store/authStore";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { FaPlayCircle } from "react-icons/fa";

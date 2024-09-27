@@ -1,5 +1,5 @@
 import axios from "axios";
-import useAuthStore from "@/store/store";
+import useAuthStore from "@/store/authStore";
 const API_URL = "https://api.themoviedb.org/3/";
 
 const fetchMovieApi = async (pathname, query = "") => {
