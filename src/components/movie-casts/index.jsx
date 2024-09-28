@@ -23,10 +23,27 @@ const MovieCasts = ({ movieCast = {} }) => {
   });
   return (
     <>
-      <Link href={`/movie/${movieCast?.id}`} className={styles.goBackBtn}>
-        <FaAngleDoubleLeft />
-        Go Back
-      </Link>
+      <div className={styles.movieDetailBanner}>
+        <Image
+          src={`https://image.tmdb.org/t/p/original${movieDetail?.poster_path}`}
+          alt={movieDetail?.title || "Movie Poster"}
+          unoptimized
+          width={110}
+          height={175}
+        />
+        <div className={styles.movieDetailTextWrapper}>
+          <div className={styles.bannerTitleWrapper}>
+            <p>{movieDetail?.title}</p>
+            <p className={styles.releaseDate}>
+              ({movieDetail?.release_date?.slice(0, 4)})
+            </p>
+          </div>
+          <Link href={`/movie/${movieCast?.id}`} className={styles.goBackBtn}>
+            <FaAngleDoubleLeft />
+            Go Back
+          </Link>
+        </div>
+      </div>
       <div className={styles.castAndCrewWrapper}>
         <div className={styles.castAreaWrapper}>
           {topCast && <h1 className={styles.castTitle}>Cast</h1>}

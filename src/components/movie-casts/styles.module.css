@@ -1,12 +1,30 @@
+.movieDetailBanner {
+  display: flex;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #1e1e1e;
+}
+.bannerTitleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.releaseDate {
+  color: #d9d2d1;
+  font-size: 24px;
+}
+.movieDetailTextWrapper {
+  margin-left: 20px;
+}
 .goBackBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 30px 0;
   font-size: 20px;
-  border: 1px solid white;
   border-radius: 8px;
-  padding: 10px;
 }
 .castAndCrewWrapper {
   display: flex;
@@ -20,7 +38,6 @@
   height: auto;
   width: 350px;
   gap: 15px;
-  border: 1px solid grey;
   border-radius: 7px;
   background-color: #1e1e1e;
   margin-bottom: 20px;
@@ -50,7 +67,6 @@
 .originalNameWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .originalNameWrapper h5 {
