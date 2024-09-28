@@ -17,7 +17,11 @@
 .tagLine {
   font-size: 27px;
 }
-
+.tagWrapper {
+  display: flex;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.793);
+}
 .overview {
   font-size: 24px;
 }

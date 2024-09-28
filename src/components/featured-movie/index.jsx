@@ -11,6 +11,7 @@ const FeaturedMovie = ({
   isCompact = true,
   params = {},
   movieCast = {},
+  movieTags = [],
 }) => {
   const setMovieDetail = useMovieDetailStore((state) => state.setMovieDetail);
 
@@ -43,11 +44,20 @@ const FeaturedMovie = ({
   return (
     <div className={styles.movieWrapper}>
       <h1 className={styles.movieTitle}>{title}</h1>
-      {tagline && params.id && <i className={styles.tagLine}>"{tagline}"</i>}
       {original_language != "en" && (
         <h3 className={styles.originalTitle}>
           Original Title: {original_title}
         </h3>
+      )}
+      {tagline && params.id && <i className={styles.tagLine}>"{tagline}"</i>}
+      {movieTags && (
+        <div className={styles.tagWrapper}>
+          {movieTags?.keywords?.slice(0, 5).map((tag) => (
+            <div key={tag?.id}>
+              <p>#{tag?.name?.split(" ")?.join("-")}</p>
+            </div>
+          ))}
+        </div>
       )}
       <div className={styles.infoWrapper}>
         <div>
