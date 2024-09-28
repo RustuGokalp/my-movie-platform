@@ -1,18 +1,17 @@
 "use client";
 import React from "react";
 import styles from "./styles.module.css";
-import useMovieCastStore from "@/store/movieCast";
+import useMovieDetailStore from "@/store/movieDetail";
 import Image from "next/image";
 import Link from "next/link";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 
-const MovieCasts = () => {
-  const movieCast = useMovieCastStore((state) => state.movieCast);
+const MovieCasts = ({ movieCast = {} }) => {
+  const movieDetail = useMovieDetailStore((state) => state.movieDetail);
   const topCast = movieCast?.cast?.sort((a, b) => b.popularity - a.popularity);
   const topCrew = movieCast?.crew?.sort((a, b) => b.popularity - a.popularity);
   const departments = new Set();
   const crewByDepartment = {};
-
   topCrew?.forEach((crewMember) => {
     departments.add(crewMember?.department);
 
