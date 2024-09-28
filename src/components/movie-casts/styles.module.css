@@ -1,0 +1,33 @@
+.goBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px;
+}
+.castAndCrewWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.departmentTitle {
+  margin: 25px 0 10px;
+}
+.crewWrapper {
+  display: flex;
+  width: 350px;
+  gap: 15px;
+  border: 1px solid grey;
+  border-radius: 7px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.crewImage {
+  object-fit: contain;
+}
+.crewMemberName {
+  font-size: 20px;
+  font-weight: bold;
+}

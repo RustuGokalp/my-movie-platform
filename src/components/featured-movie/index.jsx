@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
+import useMovieCastStore from "@/store/movieCast";
 
 const FeaturedMovie = ({
   movie = {},
@@ -10,6 +12,8 @@ const FeaturedMovie = ({
   params = {},
   movieCast = {},
 }) => {
+  const setMovieCast = useMovieCastStore((state) => state.setMovieCast);
+
   const top10Cast = movieCast?.cast
     ?.sort((a, b) => b.popularity - a.popularity)
     ?.slice(0, 10);
@@ -113,6 +117,7 @@ const FeaturedMovie = ({
             <Link
               href={`/movie/${params.id}/casts`}
               className={styles.showAllCast}
+              onClick={() => setMovieCast(movieCast)}
             >
               Show All Casts
             </Link>
