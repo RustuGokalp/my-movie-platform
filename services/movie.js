@@ -207,6 +207,10 @@ const getMovieTags = async (movieID) => {
   return fetchMovieApi(`movie/${movieID}/keywords`);
 };
 
+const getSimilarMovie = async (movieID) => {
+  return fetchMovieApi(`movie/${movieID}/similar`);
+};
+
 export {
   fetchMovieApi,
   getSingleCategory,
@@ -224,4 +228,5 @@ export {
   addToWatchlist,
   getCast,
   getMovieTags,
+  getSimilarMovie,
 };

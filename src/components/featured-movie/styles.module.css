@@ -118,7 +118,7 @@
   justify-content: flex-start;
   gap: 30px;
   overflow-x: auto;
-  padding: 10px;
+  padding-bottom: 10px;
 }
 
 .movieCastCardWrapper {
@@ -140,4 +140,20 @@
   color: white;
   font-weight: bold;
   white-space: nowrap;
+}
+.similarMoviesAreaWrapper {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 50px;
+  padding-bottom: 10px;
+}
+.similarMovieCardWrapper {
+  width: 250px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.similarMoviePoster {
+  margin-bottom: 10px;
+  border-radius: 8px;
 }

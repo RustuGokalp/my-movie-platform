@@ -11,14 +11,18 @@ const FeaturedMovie = ({
   isCompact = true,
   params = {},
   movieCast = {},
-  movieTags = [],
+  movieTags = {},
+  similarMovie = {},
 }) => {
   const setMovieDetail = useMovieDetailStore((state) => state.setMovieDetail);
 
   const top10Cast = movieCast?.cast
     ?.sort((a, b) => b.popularity - a.popularity)
     ?.slice(0, 10);
-
+  const mostPopularSimilarMovie = similarMovie?.results
+    ?.sort((a, b) => b.popularity - a.popularity)
+    .slice(0, 10);
+  console.log("mostPopularSimilarMovie", mostPopularSimilarMovie);
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
@@ -50,7 +54,7 @@ const FeaturedMovie = ({
         </h3>
       )}
       {tagline && params.id && <i className={styles.tagLine}>"{tagline}"</i>}
-      {movieTags && (
+      {movieTags?.keywords?.length > 0 && (
         <div className={styles.tagWrapper}>
           {movieTags?.keywords?.slice(0, 5).map((tag) => (
             <div key={tag?.id}>
@@ -62,7 +66,7 @@ const FeaturedMovie = ({
       <div className={styles.infoWrapper}>
         <div>
           <strong>Release Date: </strong>
-          <span>{release_date}</span>
+          <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
         </div>
         <div>
           <strong>Rating: </strong>
@@ -131,6 +135,32 @@ const FeaturedMovie = ({
             >
               Show All Casts
             </Link>
+          </div>
+        </>
+      )}
+      {mostPopularSimilarMovie && (
+        <>
+          <h1>Similar</h1>
+          <div className={styles.similarMoviesAreaWrapper}>
+            {mostPopularSimilarMovie?.map((movie) => (
+              <div className={styles.similarMovieCardWrapper} key={movie?.id}>
+                <Link href={`/movie/${movie?.id}`}>
+                  <Image
+                    unoptimized
+                    src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+                    alt={movie?.title || "Movie Title"}
+                    width={250}
+                    height={170}
+                    className={styles.similarMoviePoster}
+                  />
+                  <strong>{movie?.title}</strong>
+                  <br />
+                  <span>
+                    ⭐ {movie?.vote_average.toFixed(1)}/10 ({movie?.vote_count})
+                  </span>
+                </Link>
+              </div>
+            ))}
           </div>
         </>
       )}
