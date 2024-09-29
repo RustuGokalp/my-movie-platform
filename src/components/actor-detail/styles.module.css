@@ -27,6 +27,9 @@
 .filmCardWrapper {
   width: 200px;
 }
+.filmPoster {
+  margin-bottom: 10px;
+}
 .filmTitle {
   text-align: center;
 }

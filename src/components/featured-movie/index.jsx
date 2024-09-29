@@ -22,7 +22,7 @@ const FeaturedMovie = ({
   const mostPopularSimilarMovie = similarMovie?.results
     ?.sort((a, b) => b.popularity - a.popularity)
     .slice(0, 10);
-  console.log("mostPopularSimilarMovie", mostPopularSimilarMovie);
+
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
@@ -33,6 +33,7 @@ const FeaturedMovie = ({
   };
   const {
     backdrop_path,
+    poster_path,
     runtime,
     title,
     tagline,
@@ -68,14 +69,16 @@ const FeaturedMovie = ({
           <strong>Release Date: </strong>
           <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
         </div>
-        <div>
-          <strong>Rating: </strong>
-          <span>
-            ⭐ {vote_average.toFixed(1)}/10 ({vote_count})
-          </span>
-        </div>
+        {vote_count > 0 && (
+          <div>
+            <strong>Rating: </strong>
+            <span>
+              ⭐ {vote_average?.toFixed(1)}/10 ({vote_count})
+            </span>
+          </div>
+        )}
       </div>
-      {params.id && (
+      {params.id && runtime > 0 && (
         <div className={styles.timeWrapper}>
           <h3>Time: </h3>
           <p className={styles.runTime}> {formatRuntime(runtime)} </p>
@@ -118,7 +121,13 @@ const FeaturedMovie = ({
               <div className={styles.movieCastCardWrapper} key={cast?.id}>
                 <Image
                   unoptimized
-                  src={`https://image.tmdb.org/t/p/original${cast?.profile_path}`}
+                  src={
+                    cast?.profile_path
+                      ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
+                      : cast?.gender == 2
+                      ? "/default-profile-man.jpg"
+                      : "/default-profile-woman.jpeg"
+                  }
                   alt={cast?.name}
                   width={200}
                   height={300}
@@ -138,7 +147,7 @@ const FeaturedMovie = ({
           </div>
         </>
       )}
-      {mostPopularSimilarMovie && (
+      {mostPopularSimilarMovie?.[0] && (
         <>
           <h1>Similar</h1>
           <div className={styles.similarMoviesAreaWrapper}>
@@ -168,8 +177,12 @@ const FeaturedMovie = ({
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-          alt={title}
+          src={
+            backdrop_path
+              ? `https://image.tmdb.org/t/p/original${backdrop_path}`
+              : `https://image.tmdb.org/t/p/original${poster_path}`
+          }
+          alt={title || "Movie Poster"}
           fill
         />
       </div>
