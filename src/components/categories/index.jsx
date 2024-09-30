@@ -10,7 +10,7 @@ const Categories = ({ categories }) => {
         <Link
           key={category.id}
           className={styles.category}
-          href={`/${category.id}`}
+          href={`/movies/${category.id}`}
         >
           <div className={styles.name}>{category.name}</div>
         </Link>

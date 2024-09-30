@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
         <nav className={styles.navigationMenu}>
           <div className={styles.moviesMenuWrapper}>
-            <Link href="/" className={styles.moviesMenuButton}>
+            <Link href="/movies" className={styles.moviesMenuButton}>
               Movies <FaChevronDown />
             </Link>
             <div className={styles.moviesDropdownMenu}>
