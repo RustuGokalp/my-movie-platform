@@ -215,6 +215,10 @@ const getMoviesInTheaters = async () => {
   return fetchMovieApi(`movie/now_playing`);
 };
 
+const getUpcomingMovies = async () => {
+  return fetchMovieApi(`movie/upcoming`);
+};
+
 export {
   fetchMovieApi,
   getSingleCategory,
@@ -234,4 +238,5 @@ export {
   getMovieTags,
   getSimilarMovie,
   getMoviesInTheaters,
+  getUpcomingMovies,
 };
