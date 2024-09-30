@@ -134,7 +134,7 @@ const FeaturedMovie = ({
                   className={styles.castImage}
                 />
                 <strong className={styles.castName}>{cast?.name}</strong>
-                <div className={styles.castCharacter}>{cast?.character}</div>
+                <p className={styles.castCharacter}>{cast?.character}</p>
               </div>
             ))}
             <Link

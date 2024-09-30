@@ -118,7 +118,12 @@
   justify-content: flex-start;
   gap: 30px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.movieCastAreaWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .movieCastCardWrapper {
@@ -131,7 +136,9 @@
   border-radius: 7px;
   margin-bottom: 10px;
 }
-
+.castCharacter {
+  color: rgba(255, 255, 255, 0.793);
+}
 .showAllCast {
   display: inline-flex;
   align-items: center;
@@ -147,6 +154,11 @@
   overflow-x: auto;
   gap: 50px;
   padding-bottom: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.similarMoviesAreaWrapper::-webkit-scrollbar {
+  display: none;
 }
 .similarMovieCardWrapper {
   width: 250px;

@@ -11,17 +11,17 @@ const iconStyle = {
 };
 
 const MoviesSection = ({ title, movies }) => {
-  const [showAll, setShowAll] = useState(false);
+  const [visibleMovies, setVisibleMovies] = useState(10);
 
-  const handleShowAll = () => {
-    setShowAll(true);
+  const handleShowMore = () => {
+    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
   };
 
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.movies}>
-        {(showAll ? movies : movies.slice(0, 8)).map((movie) => (
+        {movies.slice(0, visibleMovies).map((movie) => (
           <div className={styles.movie} key={movie.id}>
             <Link href={`/movie/${movie.id}`}>
               <Image
@@ -34,10 +34,11 @@ const MoviesSection = ({ title, movies }) => {
           </div>
         ))}
       </div>
-      {!showAll && (
+
+      {visibleMovies < movies.length && (
         <div className={styles.buttonContainer}>
-          <button className={styles.showAllButton} onClick={handleShowAll}>
-            <FaChevronDown style={iconStyle} /> Show All Movies
+          <button className={styles.showAllButton} onClick={handleShowMore}>
+            <FaChevronDown style={iconStyle} /> Show More Movies
           </button>
         </div>
       )}
