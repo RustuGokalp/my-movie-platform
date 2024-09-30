@@ -4,6 +4,7 @@ import {
   getPopularMovies,
   getTopRatedMovies,
   getCategories,
+  getMoviesInTheaters,
 } from "@/services/movie";
 
 export default async function HomePage({ params }) {
@@ -13,10 +14,12 @@ export default async function HomePage({ params }) {
     { results: topRatedMovies },
     { results: popularMovies },
     { genres: categories },
+    { results: inTheaterMovies },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
     getCategories(),
+    getMoviesInTheaters(),
   ]);
 
   if (params?.category?.length > 0) {
@@ -28,6 +31,7 @@ export default async function HomePage({ params }) {
       popularMovies={popularMovies}
       topRatedMovies={topRatedMovies}
       categories={categories}
+      inTheaterMovies={inTheaterMovies}
       selectedCategory={{
         id: params.category?.[0] ?? "",
         movies: selectedCategory ? selectedCategory : [],

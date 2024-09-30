@@ -7,6 +7,7 @@ const HomeContainer = ({
   popularMovies = [],
   topRatedMovies = [],
   categories = [],
+  inTheaterMovies = [],
   selectedCategory,
 }) => {
   return (
@@ -23,6 +24,7 @@ const HomeContainer = ({
         />
       )}
 
+      <MoviesSection title="In Theater Movies" movies={inTheaterMovies} />
       <MoviesSection title="Popular Movies" movies={popularMovies} />
       <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
     </div>
