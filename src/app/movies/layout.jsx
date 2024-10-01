@@ -1,23 +1,23 @@
-import { Inter } from "@next/font/google";
+"use client";
+import React, { useEffect, useState } from "react";
 import "@/src/styles/reset.css";
 import "@/src/styles/global.css";
 import Pagination from "@/src/components/pagination";
-const interFontFamily = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Netfilms Movies",
-  description:
-    "Netfilms offers a vast collection of movies from various genres, including the latest releases and timeless classics. Discover, explore, and enjoy your favorite films with detailed descriptions, trailers, and personalized recommendations.",
-  icons: {
-    icon: "/image.png",
-  },
-};
+import { usePathname } from "next/navigation";
 
 export default function MoviesLayout({ children }) {
+  const [isNotInMovieHome, setIsNotInMovieHome] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    let slicedPath = pathname.split("/")?.length;
+    slicedPath > 2 ? setIsNotInMovieHome(true) : setIsNotInMovieHome(false);
+  }, [pathname]);
+
   return (
     <div>
       <main>{children}</main>
-      <Pagination />
+      {isNotInMovieHome && <Pagination />}
     </div>
   );
 }

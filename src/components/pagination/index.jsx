@@ -23,6 +23,13 @@ export default function PaginationButtons() {
           "& .MuiPaginationItem-root": {
             color: "white",
           },
+          "& .MuiPaginationItem-root.Mui-selected": {
+            backgroundColor: "primary.main",
+            color: "white",
+          },
+          "& .MuiPaginationItem-root:hover": {
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+          },
         }}
       />
     </Stack>

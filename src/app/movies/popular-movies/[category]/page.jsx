@@ -2,12 +2,15 @@
 import React, { useEffect } from "react";
 import { getSingleCategory, getCategories } from "@/services/movie";
 import usePopularMovieCategoryStore from "@/store/popularMovieCategory";
+import usePaginationStore from "@/store/pagination";
 import MoviesSection from "@/src/components/movies-section";
 import Categories from "@/src/components/categories/index";
 
 const Category = ({ params }) => {
   const { selectedCategory, setSelectedCategory, setGenres, genres } =
     usePopularMovieCategoryStore();
+  const { page, setPage, setTotalPages } = usePaginationStore();
+
   const fetchCategories = async () => {
     try {
       const { genres: categories } = await getCategories();
@@ -24,13 +27,19 @@ const Category = ({ params }) => {
   useEffect(() => {
     const fetchCategory = async () => {
       if (params?.category?.length > 0) {
-        const { results } = await getSingleCategory(params?.category);
+        const {
+          results,
+          page: fetchedPage,
+          total_pages,
+        } = await getSingleCategory(params?.category, page);
+        setPage(fetchedPage);
+        setTotalPages(total_pages);
         setSelectedCategory({ id: params?.category, movies: results });
       }
     };
 
     fetchCategory();
-  }, [params?.category]);
+  }, [params?.category, page]);
 
   return (
     <div>

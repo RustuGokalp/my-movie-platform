@@ -171,8 +171,8 @@ const addToWatchlist = async (movieId) => {
   }
 };
 
-const getSingleCategory = async (genreId) => {
-  return fetchMovieApi("discover/movie", { with_genres: genreId });
+const getSingleCategory = async (genreId, page) => {
+  return fetchMovieApi("discover/movie", { with_genres: genreId, page });
 };
 
 const getPopularMovies = async (page) => {
