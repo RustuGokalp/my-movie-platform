@@ -14,7 +14,7 @@ const MoviesSection = ({ title, movies }) => {
   const [visibleMovies, setVisibleMovies] = useState(10);
 
   const handleShowMore = () => {
-    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 10);
   };
 
   return (
