@@ -16,7 +16,11 @@
   gap: 24px;
   margin-bottom: 15px;
 }
-
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .movie {
   overflow: hidden;
   border-radius: 8px;

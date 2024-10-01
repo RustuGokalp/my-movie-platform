@@ -6,7 +6,7 @@ const fetchMovieApi = async (pathname, query = "") => {
   try {
     const response = await axios.get(`${API_URL}${pathname}`, {
       params: {
-        api_key: process.env.API_KEY,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
         ...query,
       },
     });
@@ -175,8 +175,8 @@ const getSingleCategory = async (genreId) => {
   return fetchMovieApi("discover/movie", { with_genres: genreId });
 };
 
-const getPopularMovies = async () => {
-  return fetchMovieApi("movie/popular", { page: 1 });
+const getPopularMovies = async (page) => {
+  return fetchMovieApi("movie/popular", { page });
 };
 
 const getTopRatedMovies = async () => {

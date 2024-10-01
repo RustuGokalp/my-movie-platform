@@ -21,15 +21,17 @@ const MoviesSection = ({ title, movies }) => {
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.movies}>
-        {movies.slice(0, visibleMovies).map((movie) => (
+        {movies?.slice(0, visibleMovies).map((movie) => (
           <div className={styles.movie} key={movie.id}>
             <Link href={`/movie/${movie.id}`}>
-              <Image
-                fill
-                unoptimized
-                alt={movie.title}
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              />
+              <div className={styles.imageWrapper}>
+                <Image
+                  fill
+                  unoptimized
+                  alt={movie.title}
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                />
+              </div>
             </Link>
           </div>
         ))}
