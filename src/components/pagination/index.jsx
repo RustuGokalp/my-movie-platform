@@ -12,7 +12,12 @@ export default function PaginationButtons() {
   };
 
   return (
-    <Stack spacing={2} justifyContent="center" alignItems="center">
+    <Stack
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      sx={{ marginTop: 5 }}
+    >
       <Pagination
         count={totalPages > 500 ? 500 : totalPages}
         page={page}
