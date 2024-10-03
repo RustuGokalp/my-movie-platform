@@ -148,7 +148,8 @@
   font-weight: bold;
   white-space: nowrap;
 }
-.similarMoviesAreaWrapper {
+.similarMoviesAreaWrapper,
+.recommendedMoviesAreaWrapper {
   display: flex;
   justify-content: flex-start;
   overflow-x: auto;
@@ -157,15 +158,18 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.similarMoviesAreaWrapper::-webkit-scrollbar {
+.similarMoviesAreaWrapper::-webkit-scrollbar,
+.recommendedMoviesAreaWrapper::-webkit-scrollbar {
   display: none;
 }
-.similarMovieCardWrapper {
+.similarMovieCardWrapper,
+.recommendedMovieCardWrapper {
   width: 250px;
   flex-shrink: 0;
   text-align: center;
 }
-.similarMoviePoster {
+.similarMoviePoster,
+.recommendedMoviePoster {
   margin-bottom: 10px;
   border-radius: 8px;
 }

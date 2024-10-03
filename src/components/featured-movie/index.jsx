@@ -13,13 +13,19 @@ const FeaturedMovie = ({
   movieCast = {},
   movieTags = {},
   similarMovie = {},
+  recommendedMovie = {},
 }) => {
   const setMovieDetail = useMovieDetailStore((state) => state.setMovieDetail);
 
   const top10Cast = movieCast?.cast
     ?.sort((a, b) => b.popularity - a.popularity)
     ?.slice(0, 10);
+
   const mostPopularSimilarMovie = similarMovie?.results
+    ?.sort((a, b) => b.popularity - a.popularity)
+    .slice(0, 10);
+
+  const mostPopularRecommendedMovie = recommendedMovie?.results
     ?.sort((a, b) => b.popularity - a.popularity)
     .slice(0, 10);
 
@@ -161,6 +167,35 @@ const FeaturedMovie = ({
                     width={250}
                     height={170}
                     className={styles.similarMoviePoster}
+                  />
+                  <strong>{movie?.title}</strong>
+                  <br />
+                  <span>
+                    ⭐ {movie?.vote_average.toFixed(1)}/10 ({movie?.vote_count})
+                  </span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+      {mostPopularRecommendedMovie?.[0] && (
+        <>
+          <h1>Recommendations</h1>
+          <div className={styles.recommendedMoviesAreaWrapper}>
+            {mostPopularRecommendedMovie?.map((movie) => (
+              <div
+                className={styles.recommendedMovieCardWrapper}
+                key={movie?.id}
+              >
+                <Link href={`/movie/${movie?.id}`}>
+                  <Image
+                    unoptimized
+                    src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+                    alt={movie?.title || "Movie Title"}
+                    width={250}
+                    height={170}
+                    className={styles.recommendedMoviePoster}
                   />
                   <strong>{movie?.title}</strong>
                   <br />

@@ -6,6 +6,7 @@ import {
   getCast,
   getMovieTags,
   getSimilarMovie,
+  getRecommendedMovie,
 } from "@/services/movie";
 
 const MoviePage = async ({ params }) => {
@@ -13,6 +14,7 @@ const MoviePage = async ({ params }) => {
   const movieCast = await getCast(params.id);
   const movieTags = await getMovieTags(params.id);
   const similarMovie = await getSimilarMovie(params.id);
+  const recommendedMovie = await getRecommendedMovie(params.id);
 
   if (!movieDetail) {
     notFound();
@@ -25,6 +27,7 @@ const MoviePage = async ({ params }) => {
       movieCast={movieCast}
       movieTags={movieTags}
       similarMovie={similarMovie}
+      recommendedMovie={recommendedMovie}
     />
   );
 };

@@ -7,6 +7,7 @@ const MovieContainer = ({
   movieCast,
   movieTags,
   similarMovie,
+  recommendedMovie,
 }) => {
   return (
     <FeaturedMovie
@@ -16,6 +17,7 @@ const MovieContainer = ({
       movieCast={movieCast}
       movieTags={movieTags}
       similarMovie={similarMovie}
+      recommendedMovie={recommendedMovie}
     />
   );
 };
