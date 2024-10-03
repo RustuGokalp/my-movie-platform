@@ -60,7 +60,7 @@ const FeaturedMovie = ({
           Original Title: {original_title}
         </h3>
       )}
-      {tagline && params.id && <i className={styles.tagLine}>"{tagline}"</i>}
+      {tagline && params?.id && <i className={styles.tagLine}>"{tagline}"</i>}
       {movieTags?.keywords?.length > 0 && (
         <div className={styles.tagWrapper}>
           {movieTags?.keywords?.slice(0, 5).map((tag) => (
@@ -71,10 +71,12 @@ const FeaturedMovie = ({
         </div>
       )}
       <div className={styles.infoWrapper}>
-        <div>
-          <strong>Release Date: </strong>
-          <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
-        </div>
+        {release_date && (
+          <div>
+            <strong>Release Date: </strong>
+            <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
+          </div>
+        )}
         {vote_count > 0 && (
           <div>
             <strong>Rating: </strong>
@@ -84,7 +86,7 @@ const FeaturedMovie = ({
           </div>
         )}
       </div>
-      {params.id && runtime > 0 && (
+      {params?.id && runtime > 0 && (
         <div className={styles.timeWrapper}>
           <h3>Time: </h3>
           <p className={styles.runTime}> {formatRuntime(runtime)} </p>
@@ -119,7 +121,7 @@ const FeaturedMovie = ({
           <p className={styles.addFavoritesBTnText}>Add To Favorites</p>
         </button>
       </div>
-      {top10Cast && (
+      {top10Cast?.length > 0 && (
         <>
           <h1>Top Casts</h1>
           <div className={styles.movieCastAreaWrapper}>
@@ -153,7 +155,7 @@ const FeaturedMovie = ({
           </div>
         </>
       )}
-      {mostPopularSimilarMovie?.[0] && (
+      {mostPopularSimilarMovie?.length > 0 && (
         <>
           <h1>You May Also Like</h1>
           <div className={styles.similarMoviesAreaWrapper}>
@@ -170,16 +172,20 @@ const FeaturedMovie = ({
                   />
                   <strong>{movie?.title}</strong>
                   <br />
-                  <span>
-                    ⭐ {movie?.vote_average.toFixed(1)}/10 ({movie?.vote_count})
-                  </span>
+
+                  {movie?.vote_count > 0 && (
+                    <span>
+                      ⭐ {movie?.vote_average.toFixed(1)}/10 (
+                      {movie?.vote_count})
+                    </span>
+                  )}
                 </Link>
               </div>
             ))}
           </div>
         </>
       )}
-      {mostPopularRecommendedMovie?.[0] && (
+      {mostPopularRecommendedMovie?.length > 0 && (
         <>
           <h1>Recommendations</h1>
           <div className={styles.recommendedMoviesAreaWrapper}>
@@ -199,9 +205,13 @@ const FeaturedMovie = ({
                   />
                   <strong>{movie?.title}</strong>
                   <br />
-                  <span>
-                    ⭐ {movie?.vote_average.toFixed(1)}/10 ({movie?.vote_count})
-                  </span>
+
+                  {movie?.vote_count > 0 && (
+                    <span>
+                      ⭐ {movie?.vote_average.toFixed(1)}/10 (
+                      {movie?.vote_count})
+                    </span>
+                  )}
                 </Link>
               </div>
             ))}
