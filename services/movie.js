@@ -179,8 +179,8 @@ const getPopularMovies = async (page) => {
   return fetchMovieApi("movie/popular", { page });
 };
 
-const getTopRatedMovies = async () => {
-  return fetchMovieApi("movie/top_rated", { page: 1 });
+const getTopRatedMovies = async (page) => {
+  return fetchMovieApi("movie/top_rated", { page });
 };
 
 const getCategories = async () => {

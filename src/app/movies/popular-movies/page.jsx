@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getPopularMovies, getCategories } from "@/services/movie";
 import usePaginationStore from "@/store/pagination";
-import usePopularMovieCategoryStore from "@/store/popularMovieCategory"; // Store'u içe aktar
+import usePopularMovieCategoryStore from "@/store/popularMovieCategory";
 import PopularMoviesContainer from "@/src/containers/popular-movies";
 
 const PopularMovies = () => {
