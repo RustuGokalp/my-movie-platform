@@ -211,8 +211,8 @@ const getSimilarMovie = async (movieID) => {
   return fetchMovieApi(`movie/${movieID}/similar`);
 };
 
-const getMoviesInTheaters = async () => {
-  return fetchMovieApi(`movie/now_playing`);
+const getMoviesInTheaters = async (page) => {
+  return fetchMovieApi(`movie/now_playing`, { page });
 };
 
 const getUpcomingMovies = async (page) => {
