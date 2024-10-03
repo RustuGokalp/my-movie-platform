@@ -149,7 +149,7 @@ const FeaturedMovie = ({
       )}
       {mostPopularSimilarMovie?.[0] && (
         <>
-          <h1>Similar</h1>
+          <h1>You May Also Like</h1>
           <div className={styles.similarMoviesAreaWrapper}>
             {mostPopularSimilarMovie?.map((movie) => (
               <div className={styles.similarMovieCardWrapper} key={movie?.id}>
