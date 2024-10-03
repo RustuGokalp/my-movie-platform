@@ -187,8 +187,8 @@ const getCategories = async () => {
   return fetchMovieApi("genre/movie/list");
 };
 
-const getActors = async () => {
-  return fetchMovieApi("person/popular");
+const getActors = async (page) => {
+  return fetchMovieApi("person/popular", { page });
 };
 
 const getActorDetail = async (id) => {

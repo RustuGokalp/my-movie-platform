@@ -23,7 +23,7 @@ const Actors = ({ actors = [] }) => {
         const tvShows = known_for.filter((known) => known.media_type === "tv");
 
         return (
-          <div key={actor.id} className={styles.actorCard}>
+          <div key={actor?.id} className={styles.actorCard}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${profile_path}`}
               width={200}
@@ -51,7 +51,7 @@ const Actors = ({ actors = [] }) => {
                   <div className={styles.moviesWrapper}>
                     <strong>Movies:</strong>
                     {movies.map((movie, index) => (
-                      <div key={index}>{movie.title}</div>
+                      <div key={index}>{movie?.title}</div>
                     ))}
                   </div>
                 )}
@@ -59,7 +59,7 @@ const Actors = ({ actors = [] }) => {
                   <div className={styles.tvShowsWrapper}>
                     <strong>TV Shows:</strong>
                     {tvShows.map((tv, index) => (
-                      <div key={index}>{tv.name}</div>
+                      <div key={index}>{tv?.name}</div>
                     ))}
                   </div>
                 )}
