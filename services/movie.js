@@ -223,6 +223,10 @@ const getUpcomingMovies = async (page) => {
   return fetchMovieApi(`movie/upcoming`, { page });
 };
 
+const getPopularSeries = async (page) => {
+  return fetchMovieApi(`tv/popular`, { page });
+};
+
 export {
   fetchMovieApi,
   getSingleCategory,
@@ -244,4 +248,5 @@ export {
   getRecommendedMovie,
   getMoviesInTheaters,
   getUpcomingMovies,
+  getPopularSeries,
 };

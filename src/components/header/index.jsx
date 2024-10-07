@@ -37,7 +37,17 @@ const Header = () => {
               <Link href="/movies/top-rated-movies">Top Rated</Link>
             </div>
           </div>
-          <Link href="/">Series</Link>
+          <div className={styles.moviesMenuWrapper}>
+            <Link href="/" className={styles.moviesMenuButton}>
+              Series <FaChevronDown />
+            </Link>
+            <div className={styles.moviesDropdownMenu}>
+              <Link href="/series/popular-series">Popular</Link>
+              <Link href="/series/upcoming-series">Upcoming</Link>
+              <Link href="/series/in-theater-series">In Theater</Link>
+              <Link href="/series/top-rated-series">Top Rated</Link>
+            </div>
+          </div>
           <Link href="/actors">Actors</Link>
           <User />
         </nav>
