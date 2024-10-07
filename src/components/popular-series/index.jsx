@@ -1,12 +1,12 @@
 import React from "react";
-import MoviesSection from "@/src/components/movies-section";
+import SeriesSection from "@/src/components/series-section";
 import Categories from "@/src/components/categories/index";
 
 const PopularSeriesComp = ({ series = [], genres = [] }) => {
   return (
     <div>
       <Categories categories={genres} />
-      <MoviesSection title="Popular Series" movies={series} />
+      <SeriesSection title="Popular Series" series={series} />
     </div>
   );
 };
