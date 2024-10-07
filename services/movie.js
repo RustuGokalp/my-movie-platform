@@ -227,6 +227,26 @@ const getPopularSeries = async (page) => {
   return fetchMovieApi(`tv/popular`, { page });
 };
 
+const getSerieDetail = async (serieID) => {
+  return fetchMovieApi(`tv/${serieID}`);
+};
+
+const getSerieCast = async (serieID) => {
+  return fetchMovieApi(`tv/${serieID}/credits`);
+};
+
+const getSerieTag = async (serieID) => {
+  return fetchMovieApi(`tv/${serieID}/keywords`);
+};
+
+const getSimilarSerie = async (serieID) => {
+  return fetchMovieApi(`tv/${serieID}/similar`);
+};
+
+const getRecommendedSerie = async (serieID) => {
+  return fetchMovieApi(`tv/${serieID}/recommendations`);
+};
+
 export {
   fetchMovieApi,
   getSingleCategory,
@@ -249,4 +269,9 @@ export {
   getMoviesInTheaters,
   getUpcomingMovies,
   getPopularSeries,
+  getSerieDetail,
+  getSerieCast,
+  getSerieTag,
+  getSimilarSerie,
+  getRecommendedSerie,
 };
