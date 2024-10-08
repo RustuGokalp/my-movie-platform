@@ -108,7 +108,10 @@ const FeaturedSerie = ({
       </div>
       <div className={styles.actionButtons}>
         {!params.id && (
-          <Link className={styles.goToDetailButton} href={`/movie/${movie.id}`}>
+          <Link
+            className={styles.goToDetailButton}
+            href={`/serie/${serieDetail?.id}`}
+          >
             Go To Detail
           </Link>
         )}
@@ -148,7 +151,7 @@ const FeaturedSerie = ({
             <Link
               href={`/movie/${params.id}/casts`}
               className={styles.showAllCast}
-              onClick={() => setMovieDetail(movie)}
+              onClick={() => setMovieDetail(serieDetail)}
             >
               Show All Casts
             </Link>
@@ -159,24 +162,24 @@ const FeaturedSerie = ({
         <>
           <h1>You May Also Like</h1>
           <div className={styles.similarMoviesAreaWrapper}>
-            {mostPopularSimilarSerie?.map((movie) => (
-              <div className={styles.similarMovieCardWrapper} key={movie?.id}>
-                <Link href={`/movie/${movie?.id}`}>
+            {mostPopularSimilarSerie?.map((serie) => (
+              <div className={styles.similarMovieCardWrapper} key={serie?.id}>
+                <Link href={`/serie/${serieDetail?.id}`}>
                   <Image
                     unoptimized
-                    src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
-                    alt={movie?.title || "Movie Title"}
+                    src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
+                    alt={serie?.title || "Serie Title"}
                     width={250}
                     height={170}
                     className={styles.similarMoviePoster}
                   />
-                  <strong>{movie?.title}</strong>
+                  <strong>{serie?.title}</strong>
                   <br />
 
-                  {movie?.vote_count > 0 && (
+                  {serie?.vote_count > 0 && (
                     <span>
-                      ⭐ {movie?.vote_average.toFixed(1)}/10 (
-                      {movie?.vote_count})
+                      ⭐ {serie?.vote_average.toFixed(1)}/10 (
+                      {serie?.vote_count})
                     </span>
                   )}
                 </Link>
@@ -189,27 +192,27 @@ const FeaturedSerie = ({
         <>
           <h1>Recommendations</h1>
           <div className={styles.recommendedMoviesAreaWrapper}>
-            {mostPopularRecommended?.map((movie) => (
+            {mostPopularRecommended?.map((serie) => (
               <div
                 className={styles.recommendedMovieCardWrapper}
-                key={movie?.id}
+                key={serie?.id}
               >
-                <Link href={`/movie/${movie?.id}`}>
+                <Link href={`/serie/${serieDetail?.id}`}>
                   <Image
                     unoptimized
-                    src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
-                    alt={movie?.title || "Movie Title"}
+                    src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
+                    alt={serie?.title || "Serie Title"}
                     width={250}
                     height={170}
                     className={styles.recommendedMoviePoster}
                   />
-                  <strong>{movie?.title}</strong>
+                  <strong>{serie?.title}</strong>
                   <br />
 
-                  {movie?.vote_count > 0 && (
+                  {serie?.vote_count > 0 && (
                     <span>
-                      ⭐ {movie?.vote_average.toFixed(1)}/10 (
-                      {movie?.vote_count})
+                      ⭐ {serie?.vote_average.toFixed(1)}/10 (
+                      {serie?.vote_count})
                     </span>
                   )}
                 </Link>
@@ -227,7 +230,7 @@ const FeaturedSerie = ({
               ? `https://image.tmdb.org/t/p/original${backdrop_path}`
               : `https://image.tmdb.org/t/p/original${poster_path}`
           }
-          alt={title || "Movie Poster"}
+          alt={title || "Serie Poster"}
           fill
         />
       </div>
