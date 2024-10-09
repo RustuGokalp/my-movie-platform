@@ -40,7 +40,6 @@ const FeaturedSerie = ({
   const {
     backdrop_path,
     poster_path,
-    runtime,
     name,
     tagline,
     overview,
@@ -123,20 +122,24 @@ const FeaturedSerie = ({
           </p>
         </div>
       )}
-      <p
-        className={`${styles.overview} ${
-          isCompact ? styles.shortOverview : ""
-        }`}
-      >
-        {overview}
-      </p>
-      <div className={styles.filmCategoryWrapper}>
-        {genres?.map((genre, index) => (
-          <div key={index} className={styles.category}>
-            {genre.name}
-          </div>
-        ))}
-      </div>
+      {overview && (
+        <p
+          className={`${styles.overview} ${
+            isCompact ? styles.shortOverview : ""
+          }`}
+        >
+          {overview}
+        </p>
+      )}
+      {genres?.length > 0 && (
+        <div className={styles.filmCategoryWrapper}>
+          {genres?.map((genre, index) => (
+            <div key={index} className={styles.category}>
+              {genre.name}
+            </div>
+          ))}
+        </div>
+      )}
       <div className={styles.actionButtons}>
         {!params.id && (
           <Link
@@ -195,7 +198,7 @@ const FeaturedSerie = ({
           <div className={styles.similarMoviesAreaWrapper}>
             {mostPopularSimilarSerie?.map((serie) => (
               <div className={styles.similarMovieCardWrapper} key={serie?.id}>
-                <Link href={`/serie/${serieDetail?.id}`}>
+                <Link href={`/serie/${serie?.id}`}>
                   <Image
                     unoptimized
                     src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
@@ -228,7 +231,7 @@ const FeaturedSerie = ({
                 className={styles.recommendedMovieCardWrapper}
                 key={serie?.id}
               >
-                <Link href={`/serie/${serieDetail?.id}`}>
+                <Link href={`/serie/${serie?.id}`}>
                   <Image
                     unoptimized
                     src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
