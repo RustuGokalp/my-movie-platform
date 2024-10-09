@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
-import useMovieDetailStore from "@/store/movieDetail";
+import useSerieDetailStore from "@/store/serieDetail";
 
 const FeaturedSerie = ({
   serieDetail = {},
@@ -15,7 +15,7 @@ const FeaturedSerie = ({
   similarSerie = {},
   recommendedSerie = {},
 }) => {
-  const setMovieDetail = useMovieDetailStore((state) => state.setMovieDetail);
+  const setSerieDetail = useSerieDetailStore((state) => state.setSerieDetail);
 
   const top10Cast = serieCast?.cast
     ?.sort((a, b) => b.popularity - a.popularity)
@@ -183,9 +183,9 @@ const FeaturedSerie = ({
               </div>
             ))}
             <Link
-              href={`/movie/${params.id}/casts`}
+              href={`/serie/${params.id}/casts`}
               className={styles.showAllCast}
-              onClick={() => setMovieDetail(serieDetail)}
+              onClick={() => setSerieDetail(serieDetail)}
             >
               Show All Casts
             </Link>

@@ -1,0 +1,91 @@
+.movieDetailBanner {
+  display: flex;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #1e1e1e;
+}
+.bannerTitleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.serieSeasonsInfos {
+  font-size: 18px;
+}
+.releaseDate {
+  color: #d9d2d1;
+  font-size: 24px;
+}
+.movieDetailTextWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.goBackBtn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto;
+  gap: 10px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+.castAndCrewWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.crewWrapper,
+.castWrapper {
+  display: flex;
+  min-height: 115px;
+  height: auto;
+  width: 350px;
+  gap: 15px;
+  border-radius: 7px;
+  background-color: #1e1e1e;
+  margin-bottom: 20px;
+}
+.crewImage {
+  height: auto;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+.castMemberName,
+.crewMemberName {
+  font-size: 22px;
+  font-weight: 500;
+}
+.castTitle,
+.crewTitle,
+.departmentTitle {
+  border-bottom: 1px solid darkgrey;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.cardTextWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px 15px 0;
+}
+.originalNameWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.originalNameWrapper h5 {
+  margin-left: 5px;
+}
+.characterArea,
+.crewJob {
+  color: rgba(255, 255, 255, 0.7);
+}
+@media only screen and (max-width: 768px) {
+  .castAndCrewWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
