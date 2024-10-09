@@ -175,6 +175,10 @@ const getSingleCategory = async (genreId, page) => {
   return fetchMovieApi("discover/movie", { with_genres: genreId, page });
 };
 
+const getSingleSerieCategory = async (genreId, page) => {
+  return fetchMovieApi("discover/tv", { with_genres: genreId, page });
+};
+
 const getPopularMovies = async (page) => {
   return fetchMovieApi("movie/popular", { page });
 };
@@ -185,6 +189,10 @@ const getTopRatedMovies = async (page) => {
 
 const getCategories = async () => {
   return fetchMovieApi("genre/movie/list");
+};
+
+const getTVCategories = async () => {
+  return fetchMovieApi("genre/tv/list");
 };
 
 const getActors = async (page) => {
@@ -250,9 +258,11 @@ const getRecommendedSerie = async (serieID) => {
 export {
   fetchMovieApi,
   getSingleCategory,
+  getSingleSerieCategory,
   getPopularMovies,
   getTopRatedMovies,
   getCategories,
+  getTVCategories,
   getActors,
   getActorDetail,
   getMovie,

@@ -9,21 +9,34 @@ const Categories = ({ categories }) => {
   const [baseHref, setBaseHref] = useState("/movies");
 
   useEffect(() => {
+    const isMovies = pathname.includes("/movies");
+    const isSeries = pathname.includes("/series");
+
+    const basePath = isMovies ? "/movies" : isSeries ? "/series" : "/movies";
+
     switch (true) {
-      case pathname.includes("/movies/popular-movies"):
-        setBaseHref("/movies/popular-movies");
+      case pathname.includes(
+        `${basePath}/popular-${isMovies ? "movies" : "series"}`
+      ):
+        setBaseHref(`${basePath}/popular-${isMovies ? "movies" : "series"}`);
         break;
-      case pathname.includes("/movies/top-rated-movies"):
-        setBaseHref("/movies/top-rated-movies");
+      case pathname.includes(
+        `${basePath}/top-rated-${isMovies ? "movies" : "series"}`
+      ):
+        setBaseHref(`${basePath}/top-rated-${isMovies ? "movies" : "series"}`);
         break;
-      case pathname.includes("/movies/upcoming-movies"):
-        setBaseHref("/movies/upcoming-movies");
+      case pathname.includes(
+        `${basePath}/upcoming-${isMovies ? "movies" : "series"}`
+      ):
+        setBaseHref(`${basePath}/upcoming-${isMovies ? "movies" : "series"}`);
         break;
-      case pathname.includes("/movies/in-theater-movies"):
-        setBaseHref("/movies/in-theater-movies");
+      case pathname.includes(
+        `${basePath}/in-theater-${isMovies ? "movies" : "series"}`
+      ):
+        setBaseHref(`${basePath}/in-theater-${isMovies ? "movies" : "series"}`);
         break;
       default:
-        setBaseHref("/movies");
+        setBaseHref(basePath);
     }
   }, [pathname]);
 

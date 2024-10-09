@@ -28,7 +28,7 @@ const SeriesSection = ({ title, series }) => {
                 <Image
                   fill
                   unoptimized
-                  alt={serie?.name}
+                  alt={serie?.name ?? "Serie Poster"}
                   src={`https://image.tmdb.org/t/p/original${serie?.poster_path}`}
                 />
               </div>

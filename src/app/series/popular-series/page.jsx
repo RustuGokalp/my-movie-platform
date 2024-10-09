@@ -1,19 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getPopularSeries, getCategories } from "@/services/movie";
+import { getPopularSeries, getTVCategories } from "@/services/movie";
 import usePaginationStore from "@/store/pagination";
-import usePopularMovieCategoryStore from "@/store/popularMovieCategory";
+import usePopularSeriesCategoryStore from "@/store/popularSerieCategory";
 import PopularSeriesContainer from "@/src/containers/popular-series";
 
 const PopularSeries = () => {
   const [series, setSeries] = useState([]);
   const { page, setTotalPages } = usePaginationStore();
 
-  const { genres, setGenres } = usePopularMovieCategoryStore();
+  const { tvGenres, setTvGenres } = usePopularSeriesCategoryStore();
   const fetchCategories = async () => {
     try {
-      const { genres } = await getCategories();
-      setGenres(genres);
+      const { genres } = await getTVCategories();
+      setTvGenres(genres);
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -37,7 +37,7 @@ const PopularSeries = () => {
     fetchSeries(page);
   }, [page]);
 
-  return <PopularSeriesContainer series={series} genres={genres} />;
+  return <PopularSeriesContainer series={series} genres={tvGenres} />;
 };
 
 export default PopularSeries;
