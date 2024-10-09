@@ -41,29 +41,32 @@ const FeaturedSerie = ({
     backdrop_path,
     poster_path,
     runtime,
-    title,
+    name,
     tagline,
     overview,
-    original_title,
+    original_name,
     original_language,
     genres,
-    release_date,
+    first_air_date,
+    last_air_date,
+    number_of_seasons,
+    number_of_episodes,
+    next_episode_to_air,
+    episode_run_time,
     vote_average,
     vote_count,
   } = serieDetail;
 
   return (
     <div className={styles.movieWrapper}>
-      <h1 className={styles.movieTitle}>{title}</h1>
+      <h1 className={styles.movieTitle}>{name}</h1>
       {original_language != "en" && (
-        <h3 className={styles.originalTitle}>
-          Original Title: {original_title}
-        </h3>
+        <h3 className={styles.originalTitle}>Original Name: {original_name}</h3>
       )}
       {tagline && params?.id && <i className={styles.tagLine}>"{tagline}"</i>}
-      {serieTags?.keywords?.length > 0 && (
+      {serieTags?.results?.length > 0 && (
         <div className={styles.tagWrapper}>
-          {serieTags?.keywords?.slice(0, 5).map((tag) => (
+          {serieTags?.results?.slice(0, 5).map((tag) => (
             <div key={tag?.id}>
               <p>#{tag?.name?.split(" ")?.join("-")}</p>
             </div>
@@ -71,10 +74,16 @@ const FeaturedSerie = ({
         </div>
       )}
       <div className={styles.infoWrapper}>
-        {release_date && (
+        {first_air_date && (
           <div>
-            <strong>Release Date: </strong>
-            <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
+            <strong>First Air Date: </strong>
+            <span>{first_air_date?.split("-")?.reverse()?.join("-")}</span>
+          </div>
+        )}
+        {last_air_date && (
+          <div>
+            <strong>Last Air Date: </strong>
+            <span>{last_air_date?.split("-")?.reverse()?.join("-")}</span>
           </div>
         )}
         {vote_count > 0 && (
@@ -86,10 +95,32 @@ const FeaturedSerie = ({
           </div>
         )}
       </div>
-      {params?.id && runtime > 0 && (
+      {params?.id && episode_run_time > 0 && (
         <div className={styles.timeWrapper}>
-          <h3>Time: </h3>
-          <p className={styles.runTime}> {formatRuntime(runtime)} </p>
+          <h3>Episode Runtime: </h3>
+          <p className={styles.runTime}> {formatRuntime(episode_run_time)} </p>
+        </div>
+      )}
+      {number_of_seasons && number_of_episodes && (
+        <div className={styles.infoWrapper}>
+          <div>
+            <strong> Number of seasons:</strong> {number_of_seasons}
+          </div>
+          <div>
+            <strong>Number of episodes:</strong> {number_of_episodes}
+          </div>
+        </div>
+      )}
+      {next_episode_to_air && (
+        <div className={styles.timeWrapper}>
+          <h3>Next Episode To Air: </h3>
+          <p className={styles.runTime}>
+            {" "}
+            {next_episode_to_air?.air_date
+              ?.split("-")
+              ?.reverse()
+              ?.join("-")}{" "}
+          </p>
         </div>
       )}
       <p
@@ -168,12 +199,12 @@ const FeaturedSerie = ({
                   <Image
                     unoptimized
                     src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
-                    alt={serie?.title || "Serie Title"}
+                    alt={serie?.name || "Serie Name"}
                     width={250}
                     height={170}
                     className={styles.similarMoviePoster}
                   />
-                  <strong>{serie?.title}</strong>
+                  <strong>{serie?.name}</strong>
                   <br />
 
                   {serie?.vote_count > 0 && (
@@ -201,12 +232,12 @@ const FeaturedSerie = ({
                   <Image
                     unoptimized
                     src={`https://image.tmdb.org/t/p/original${serie?.backdrop_path}`}
-                    alt={serie?.title || "Serie Title"}
+                    alt={serie?.name || "Serie Name"}
                     width={250}
                     height={170}
                     className={styles.recommendedMoviePoster}
                   />
-                  <strong>{serie?.title}</strong>
+                  <strong>{serie?.name}</strong>
                   <br />
 
                   {serie?.vote_count > 0 && (
@@ -230,7 +261,7 @@ const FeaturedSerie = ({
               ? `https://image.tmdb.org/t/p/original${backdrop_path}`
               : `https://image.tmdb.org/t/p/original${poster_path}`
           }
-          alt={title || "Serie Poster"}
+          alt={name || "Serie Poster"}
           fill
         />
       </div>
