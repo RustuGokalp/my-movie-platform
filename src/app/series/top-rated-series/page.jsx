@@ -4,7 +4,7 @@ import usePaginationStore from "@/store/pagination";
 import { getTopRatedSeries } from "@/services/movie";
 import TopRatedSeriesContainer from "@/src/containers/top-rated-series";
 
-const UpcomingSeries = () => {
+const TopRatedSeries = () => {
   const [series, setSeries] = useState([]);
   const { page, setTotalPages } = usePaginationStore();
 
@@ -25,4 +25,4 @@ const UpcomingSeries = () => {
   return <TopRatedSeriesContainer series={series} />;
 };
 
-export default UpcomingSeries;
+export default TopRatedSeries;
