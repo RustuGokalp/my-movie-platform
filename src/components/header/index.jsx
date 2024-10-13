@@ -43,9 +43,9 @@ const Header = () => {
             </Link>
             <div className={styles.moviesDropdownMenu}>
               <Link href="/series/popular-series">Popular</Link>
+              <Link href="/series/top-rated-series">Top Rated</Link>
               <Link href="/series/upcoming-series">Upcoming</Link>
               <Link href="/series/in-theater-series">In Theater</Link>
-              <Link href="/series/top-rated-series">Top Rated</Link>
             </div>
           </div>
           <Link href="/actors">Actors</Link>

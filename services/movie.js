@@ -235,6 +235,10 @@ const getPopularSeries = async (page) => {
   return fetchMovieApi(`tv/popular`, { page });
 };
 
+const getTopRatedSeries = async (page) => {
+  return fetchMovieApi(`tv/top_rated`, { page });
+};
+
 const getSerieDetail = async (serieID) => {
   return fetchMovieApi(`tv/${serieID}`);
 };
@@ -279,6 +283,7 @@ export {
   getMoviesInTheaters,
   getUpcomingMovies,
   getPopularSeries,
+  getTopRatedSeries,
   getSerieDetail,
   getSerieCast,
   getSerieTag,
