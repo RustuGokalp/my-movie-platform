@@ -243,6 +243,10 @@ const getOnTheAirSeries = async (page) => {
   return fetchMovieApi(`tv/on_the_air`, { page });
 };
 
+const getAiringTodaySeries = async (page) => {
+  return fetchMovieApi(`tv/airing_today`, { page });
+};
+
 const getSerieDetail = async (serieID) => {
   return fetchMovieApi(`tv/${serieID}`);
 };
@@ -289,6 +293,7 @@ export {
   getPopularSeries,
   getTopRatedSeries,
   getOnTheAirSeries,
+  getAiringTodaySeries,
   getSerieDetail,
   getSerieCast,
   getSerieTag,

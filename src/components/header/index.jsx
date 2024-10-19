@@ -45,7 +45,7 @@ const Header = () => {
               <Link href="/series/popular-series">Popular</Link>
               <Link href="/series/top-rated-series">Top Rated</Link>
               <Link href="/series/on-the-air-series">On The Air</Link>
-              <Link href="/series/in-theater-series">In Theater</Link>
+              <Link href="/series/airing-today-series">Airing Today</Link>
             </div>
           </div>
           <Link href="/actors">Actors</Link>
