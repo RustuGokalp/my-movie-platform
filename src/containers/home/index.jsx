@@ -25,10 +25,10 @@ const HomeContainer = ({
         />
       )}
 
-      <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
-      <MoviesSection title="In Theater Movies" movies={inTheaterMovies} />
       <MoviesSection title="Popular Movies" movies={popularMovies} />
       <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
+      <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
+      <MoviesSection title="In Theater Movies" movies={inTheaterMovies} />
     </div>
   );
 };
