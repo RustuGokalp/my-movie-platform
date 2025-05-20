@@ -6,6 +6,7 @@ import {
   getCategories,
   getMoviesInTheaters,
   getUpcomingMovies,
+  getPopularSeries,
 } from "@/services/movie";
 
 export default async function HomePage({ params }) {
@@ -17,12 +18,14 @@ export default async function HomePage({ params }) {
     { genres: categories },
     { results: inTheaterMovies },
     { results: upcomingMovies },
+    { results: popularSeries },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
     getCategories(),
     getMoviesInTheaters(),
     getUpcomingMovies(),
+    getPopularSeries(),
   ]);
 
   if (params?.category?.length > 0) {
@@ -40,6 +43,7 @@ export default async function HomePage({ params }) {
         id: params.category?.[0] ?? "",
         movies: selectedCategory ? selectedCategory : [],
       }}
+      popularSeries={popularSeries}
     />
   );
 }

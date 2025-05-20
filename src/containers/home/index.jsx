@@ -2,7 +2,7 @@ import React from "react";
 import FeaturedMovies from "@/src/components/featured-movie/index";
 import Categories from "@/src/components/categories/index";
 import MoviesSection from "@/src/components/movies-section/index";
-
+import PopularSeriesAndFilms from "@/src/components/popular-series-and-films/index";
 const HomeContainer = ({
   popularMovies = [],
   topRatedMovies = [],
@@ -10,10 +10,23 @@ const HomeContainer = ({
   inTheaterMovies = [],
   upcomingMovies = [],
   selectedCategory,
+  popularSeries = [],
 }) => {
+  const sortedPopularMovies = [...popularMovies].sort(
+    (a, b) => b.popularity - a.popularity
+  );
+  const sortedPopularSeries = [...popularSeries].sort(
+    (a, b) => b.popularity - a.popularity
+  );
+
+  const combinedPopularContent = [
+    ...sortedPopularMovies,
+    ...sortedPopularSeries,
+  ].sort((a, b) => b.popularity - a.popularity);
+
   return (
     <div>
-      <FeaturedMovies movie={popularMovies[0]} />
+      <FeaturedMovies movie={combinedPopularContent[0]} />
       <Categories categories={categories} />
       {selectedCategory?.movies?.length > 0 && (
         <MoviesSection
@@ -24,7 +37,10 @@ const HomeContainer = ({
           movies={selectedCategory.movies}
         />
       )}
-
+      <PopularSeriesAndFilms
+        title={"Popular"}
+        movies={combinedPopularContent}
+      />
       <MoviesSection title="Popular Movies" movies={popularMovies} />
       <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
       <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
