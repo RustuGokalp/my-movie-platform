@@ -7,6 +7,7 @@ import {
   getMoviesInTheaters,
   getUpcomingMovies,
   getPopularSeries,
+  getAiringTodaySeries,
 } from "@/services/movie";
 
 export default async function HomePage({ params }) {
@@ -19,6 +20,7 @@ export default async function HomePage({ params }) {
     { results: inTheaterMovies },
     { results: upcomingMovies },
     { results: popularSeries },
+    { results: airingTodaySeries },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
@@ -26,6 +28,7 @@ export default async function HomePage({ params }) {
     getMoviesInTheaters(),
     getUpcomingMovies(),
     getPopularSeries(),
+    getAiringTodaySeries(),
   ]);
 
   if (params?.category?.length > 0) {
@@ -44,6 +47,7 @@ export default async function HomePage({ params }) {
         movies: selectedCategory ? selectedCategory : [],
       }}
       popularSeries={popularSeries}
+      airingTodaySeries={airingTodaySeries}
     />
   );
 }

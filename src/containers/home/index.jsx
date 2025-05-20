@@ -11,6 +11,7 @@ const HomeContainer = ({
   upcomingMovies = [],
   selectedCategory,
   popularSeries = [],
+  airingTodaySeries = [],
 }) => {
   const sortedPopularMovies = [...popularMovies].sort(
     (a, b) => b.popularity - a.popularity
@@ -41,6 +42,7 @@ const HomeContainer = ({
         title={"Popular"}
         movies={combinedPopularContent}
       />
+      <MoviesSection title="Airing Today Series" movies={airingTodaySeries} />
       <MoviesSection title="Popular Movies" movies={popularMovies} />
       <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
       <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
