@@ -1,7 +1,7 @@
 import React from "react";
 import Loading from "@/src/components/loading/index";
 
-const MovieLoading = () => {
+const SerieLoading = () => {
   return (
     <div
       style={{
@@ -16,4 +16,4 @@ const MovieLoading = () => {
   );
 };
 
-export default MovieLoading;
+export default SerieLoading;
