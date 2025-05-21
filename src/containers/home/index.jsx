@@ -2,7 +2,6 @@ import React from "react";
 import FeaturedMovies from "@/src/components/featured-movie/index";
 import Categories from "@/src/components/categories/index";
 import MoviesSection from "@/src/components/movies-section/index";
-import PopularSeriesAndFilms from "@/src/components/popular-series-and-films/index";
 const HomeContainer = ({
   popularMovies = [],
   topRatedMovies = [],
@@ -38,10 +37,7 @@ const HomeContainer = ({
           movies={selectedCategory.movies}
         />
       )}
-      <PopularSeriesAndFilms
-        title={"Popular"}
-        movies={combinedPopularContent}
-      />
+      <MoviesSection title="Popular" movies={combinedPopularContent} />
       <MoviesSection title="Airing Today Series" movies={airingTodaySeries} />
       <MoviesSection title="Popular Movies" movies={popularMovies} />
       <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
