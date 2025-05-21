@@ -40,7 +40,7 @@ const MoviesSection = ({ title, movies }) => {
       {visibleMovies < movies?.length && (
         <div className={styles.buttonContainer}>
           <button className={styles.showAllButton} onClick={handleShowMore}>
-            <FaChevronDown style={iconStyle} /> Show More Movies
+            <FaChevronDown style={iconStyle} /> Show More
           </button>
         </div>
       )}
