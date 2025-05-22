@@ -2,8 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-const ActorDetail = ({ actorDetail, actorOriginalNameAndJobs }) => {
-  const { original_name, known_for } = actorOriginalNameAndJobs;
+const ActorDetail = ({ actorDetail, actorCredits }) => {
   const {
     adult,
     also_known_as,
@@ -12,10 +11,9 @@ const ActorDetail = ({ actorDetail, actorOriginalNameAndJobs }) => {
     deathday,
     gender,
     homepage,
-    id,
     imdb_id,
-    known_for_department,
     name,
+    known_for_department,
     place_of_birth,
     popularity,
     profile_path,
@@ -28,17 +26,11 @@ const ActorDetail = ({ actorDetail, actorOriginalNameAndJobs }) => {
           className={styles.actorImage}
           width={400}
           height={600}
-          alt={name}
+          alt={`${name} Photo`}
           unoptimized
         />
         <div>
           <h1>{name}</h1>
-          {name != original_name && (
-            <div className={styles.originalNameWrapper}>
-              <h3>Original Name:</h3>
-              <h2>{original_name}</h2>
-            </div>
-          )}
           <h3>{known_for_department}</h3>
           <div>{biography}</div>
         </div>
@@ -46,28 +38,38 @@ const ActorDetail = ({ actorDetail, actorOriginalNameAndJobs }) => {
       <div className={styles.knownForWrapper}>
         <h1 className={styles.knownForTitle}>Known For</h1>
         <div className={styles.actorsJobs}>
-          {known_for.map((film) => (
-            <div className={styles.filmCardWrapper} key={film.id}>
-              <Link href={`/movie/${film.id}`}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-                  width={200}
-                  height={300}
-                  className={styles.filmPoster}
-                  alt={name}
-                  unoptimized
-                />
-              </Link>
-              <div className={styles.filmDetail}>
-                <div className={styles.filmTitle}>
-                  <strong>{film.title}</strong>
-                  <p>
-                    ⭐ {film.vote_average.toFixed(1)}/10 ({film.vote_count})
-                  </p>
+          <div className={styles.actorJobsPosterWrapper}>
+            {actorCredits.map((credit, id) => (
+              <div className={styles.filmCardWrapper} key={id}>
+                <Link
+                  href={`/${credit.title ? "movie" : "serie"}/${credit.id}`}
+                >
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${credit.poster_path}`}
+                    width={200}
+                    height={300}
+                    className={styles.filmPoster}
+                    alt={credit.name ?? credit.title}
+                    unoptimized
+                  />
+                </Link>
+                <div className={styles.filmDetail}>
+                  <div className={styles.filmTitle}>
+                    <strong>{credit.title ?? credit.name}</strong>
+                    <p>
+                      ⭐ {credit.vote_average?.toFixed(1)}/10 (
+                      {credit.vote_count})
+                    </p>
+                  </div>
+                  {credit.character && (
+                    <p className={styles.characterName}>
+                      As: {credit.character}
+                    </p>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

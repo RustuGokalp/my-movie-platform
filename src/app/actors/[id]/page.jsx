@@ -1,20 +1,33 @@
-"use client";
 import ActorDetailContainer from "@/src/containers/actorDetail/index";
-import { getActors, getActorDetail } from "@/services/movie";
-import usePaginationStore from "@/store/pagination";
+import {
+  getActorDetail,
+  getActorTvCredits,
+  getActorMovieCredits,
+} from "@/services/movie";
 
 const ActorDetail = async ({ params }) => {
-  const { page } = usePaginationStore();
   const actorDetail = await getActorDetail(params?.id);
-  const { results } = await getActors(page);
-  const findActor = results.find((actor) => actor?.id == params?.id);
-  // findActor yerine /person/{person_id}/movie_credits &&
-  // /person/{person_id}/tv_credits endpointleri kullanarak actor'un oynadığı dizi ve filmleri alıcam
+
+  const rawActorTVCredit = await getActorTvCredits(params?.id);
+  const rawActorMovieCredit = await getActorMovieCredits(params?.id);
+
+  const actorTVCredit = rawActorTVCredit?.cast || [];
+  const actorMovieCredit = rawActorMovieCredit?.cast || [];
+
+  const allActorCredits = [...actorMovieCredit, ...actorTVCredit];
+
+  const sortedActorCredits = allActorCredits.sort((a, b) => {
+    const popularityA =
+      a.vote_count === undefined || a.vote_count === null ? 0 : a.vote_count;
+    const popularityB =
+      b.vote_count === undefined || b.vote_count === null ? 0 : b.vote_count;
+    return popularityB - popularityA;
+  });
 
   return (
     <ActorDetailContainer
       actorDetail={actorDetail}
-      actorOriginalNameAndJobs={findActor}
+      actorCredits={sortedActorCredits}
     />
   );
 };
