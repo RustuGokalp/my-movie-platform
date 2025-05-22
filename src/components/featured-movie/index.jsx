@@ -127,21 +127,23 @@ const FeaturedMovie = ({
           <div className={styles.movieCastAreaWrapper}>
             {top10Cast?.map((cast) => (
               <div className={styles.movieCastCardWrapper} key={cast?.id}>
-                <Image
-                  unoptimized
-                  src={
-                    cast?.profile_path
-                      ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
-                      : cast?.gender == 2
-                      ? "/default-profile-man.jpg"
-                      : "/default-profile-woman.jpeg"
-                  }
-                  alt={cast?.name}
-                  width={200}
-                  height={300}
-                  className={styles.castImage}
-                />
-                <strong className={styles.castName}>{cast?.name}</strong>
+                <Link href={`/actors/${cast?.id}`}>
+                  <Image
+                    unoptimized
+                    src={
+                      cast?.profile_path
+                        ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
+                        : cast?.gender == 2
+                        ? "/default-profile-man.jpg"
+                        : "/default-profile-woman.jpeg"
+                    }
+                    alt={cast?.name}
+                    width={200}
+                    height={300}
+                    className={styles.castImage}
+                  />
+                  <strong className={styles.castName}>{cast?.name}</strong>
+                </Link>
                 <p className={styles.castCharacter}>{cast?.character}</p>
               </div>
             ))}

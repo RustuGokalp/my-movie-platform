@@ -203,6 +203,14 @@ const getActorDetail = async (id) => {
   return fetchMovieApi(`person/${id}`);
 };
 
+const getActorTvCredits = async (id) => {
+  return fetchMovieApi(`person/${id}/tv_credits`);
+};
+
+const getActorMovieCredits = async (id) => {
+  return fetchMovieApi(`person/${id}/movie_credits`);
+};
+
 const getMovie = async (movieId) => {
   return fetchMovieApi(`movie/${movieId}`);
 };
@@ -277,6 +285,8 @@ export {
   getTVCategories,
   getActors,
   getActorDetail,
+  getActorTvCredits,
+  getActorMovieCredits,
   getMovie,
   createRequestToken,
   validateWithLogin,
