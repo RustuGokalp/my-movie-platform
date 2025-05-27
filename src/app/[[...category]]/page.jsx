@@ -6,11 +6,10 @@ import {
   getUpcomingMovies,
   getPopularSeries,
   getAiringTodaySeries,
+  getTopRatedSeries,
 } from "@/services/movie";
 
-export default async function HomePage({ params }) {
-  let selectedCategory;
-
+export default async function HomePage() {
   const [
     { results: topRatedMovies },
     { results: popularMovies },
@@ -18,6 +17,7 @@ export default async function HomePage({ params }) {
     { results: upcomingMovies },
     { results: popularSeries },
     { results: airingTodaySeries },
+    { results: topRatedSeries },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
@@ -25,6 +25,7 @@ export default async function HomePage({ params }) {
     getUpcomingMovies(),
     getPopularSeries(),
     getAiringTodaySeries(),
+    getTopRatedSeries(),
   ]);
 
   return (
@@ -35,6 +36,7 @@ export default async function HomePage({ params }) {
       upcomingMovies={upcomingMovies}
       popularSeries={popularSeries}
       airingTodaySeries={airingTodaySeries}
+      topRatedSeries={topRatedSeries}
     />
   );
 }

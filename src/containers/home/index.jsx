@@ -8,7 +8,12 @@ const HomeContainer = ({
   upcomingMovies = [],
   popularSeries = [],
   airingTodaySeries = [],
+  topRatedSeries = [],
 }) => {
+  const mostRatedSeries = topRatedSeries.sort(
+    (a, b) => b?.vote_count - a?.vote_count
+  );
+
   const sortedPopularMovies = [...popularMovies].sort(
     (a, b) => b.popularity - a.popularity
   );
@@ -26,10 +31,10 @@ const HomeContainer = ({
       <FeaturedMovies movie={combinedPopularContent[0]} />
       <MoviesSection title="Popular" movies={combinedPopularContent} />
       <MoviesSection title="Airing Today Series" movies={airingTodaySeries} />
-      <MoviesSection title="Popular Movies" movies={popularMovies} />
-      <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
       <MoviesSection title="Upcoming Movies" movies={upcomingMovies} />
       <MoviesSection title="In Theater Movies" movies={inTheaterMovies} />
+      <MoviesSection title="Top Rated Movies" movies={topRatedMovies} />
+      <MoviesSection title="Top Rated Series" movies={mostRatedSeries} />
     </div>
   );
 };
