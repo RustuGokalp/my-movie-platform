@@ -1,14 +1,11 @@
 import React from "react";
 import FeaturedMovies from "@/src/components/featured-movie/index";
-import Categories from "@/src/components/categories/index";
 import MoviesSection from "@/src/components/movies-section/index";
 const HomeContainer = ({
   popularMovies = [],
   topRatedMovies = [],
-  categories = [],
   inTheaterMovies = [],
   upcomingMovies = [],
-  selectedCategory,
   popularSeries = [],
   airingTodaySeries = [],
 }) => {
@@ -27,16 +24,6 @@ const HomeContainer = ({
   return (
     <div>
       <FeaturedMovies movie={combinedPopularContent[0]} />
-      <Categories categories={categories} />
-      {selectedCategory?.movies?.length > 0 && (
-        <MoviesSection
-          title={
-            categories.find((category) => category.id == selectedCategory.id)
-              ?.name
-          }
-          movies={selectedCategory.movies}
-        />
-      )}
       <MoviesSection title="Popular" movies={combinedPopularContent} />
       <MoviesSection title="Airing Today Series" movies={airingTodaySeries} />
       <MoviesSection title="Popular Movies" movies={popularMovies} />

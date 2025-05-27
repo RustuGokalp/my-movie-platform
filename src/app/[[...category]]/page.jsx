@@ -1,9 +1,7 @@
 import HomeContainer from "@/src/containers/home";
 import {
-  getSingleCategory,
   getPopularMovies,
   getTopRatedMovies,
-  getCategories,
   getMoviesInTheaters,
   getUpcomingMovies,
   getPopularSeries,
@@ -16,7 +14,6 @@ export default async function HomePage({ params }) {
   const [
     { results: topRatedMovies },
     { results: popularMovies },
-    { genres: categories },
     { results: inTheaterMovies },
     { results: upcomingMovies },
     { results: popularSeries },
@@ -24,28 +21,18 @@ export default async function HomePage({ params }) {
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
-    getCategories(),
     getMoviesInTheaters(),
     getUpcomingMovies(),
     getPopularSeries(),
     getAiringTodaySeries(),
   ]);
 
-  if (params?.category?.length > 0) {
-    const { results } = await getSingleCategory(params.category[0]);
-    selectedCategory = results;
-  }
   return (
     <HomeContainer
       popularMovies={popularMovies}
       topRatedMovies={topRatedMovies}
-      categories={categories}
       inTheaterMovies={inTheaterMovies}
       upcomingMovies={upcomingMovies}
-      selectedCategory={{
-        id: params.category?.[0] ?? "",
-        movies: selectedCategory ? selectedCategory : [],
-      }}
       popularSeries={popularSeries}
       airingTodaySeries={airingTodaySeries}
     />
