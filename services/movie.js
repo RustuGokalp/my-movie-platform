@@ -171,6 +171,28 @@ const addToWatchlist = async (movieId) => {
   }
 };
 
+const getWatchlistMovies = async (accountId, sessionId) => {
+  if (!accountId || !sessionId) {
+    throw new Error(
+      "Account ID or Session ID is missing for watchlist movies."
+    );
+  }
+  return fetchMovieApi(`account/${accountId}/watchlist/movies`, {
+    session_id: sessionId,
+  });
+};
+
+const getWatchlistTvShows = async (accountId, sessionId) => {
+  if (!accountId || !sessionId) {
+    throw new Error(
+      "Account ID or Session ID is missing for watchlist TV shows."
+    );
+  }
+  return fetchMovieApi(`account/${accountId}/watchlist/tv`, {
+    session_id: sessionId,
+  });
+};
+
 const getSingleCategory = async (genreId, page) => {
   return fetchMovieApi("discover/movie", { with_genres: genreId, page });
 };
@@ -294,6 +316,8 @@ export {
   accountDetail,
   deleteSession,
   addToWatchlist,
+  getWatchlistMovies,
+  getWatchlistTvShows,
   getCast,
   getMovieTags,
   getSimilarMovie,
