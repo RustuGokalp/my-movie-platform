@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -14,13 +15,19 @@ import "react-responsive-modal/styles.css";
 import styles from "./styles.module.css";
 
 const Login = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
   const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
+  const closeModal = () => {
+    setOpen(false);
+    if (isSuccess) {
+      router.push("/");
+    }
+  };
 
   const handleLogin = async (values, { setErrors }) => {
     setLoading(true);
