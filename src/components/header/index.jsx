@@ -38,7 +38,7 @@ const Header = () => {
             </div>
           </div>
           <div className={styles.moviesMenuWrapper}>
-            <Link href="/" className={styles.moviesMenuButton}>
+            <Link href="/series" className={styles.moviesMenuButton}>
               Series <FaChevronDown />
             </Link>
             <div className={styles.moviesDropdownMenu}>

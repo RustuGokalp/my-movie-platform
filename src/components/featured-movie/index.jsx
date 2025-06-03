@@ -42,6 +42,9 @@ const FeaturedMovie = ({
     poster_path,
     runtime,
     title,
+    name,
+    original_name,
+    first_air_date,
     tagline,
     overview,
     original_title,
@@ -54,10 +57,10 @@ const FeaturedMovie = ({
 
   return (
     <div className={styles.movieWrapper}>
-      <h1 className={styles.movieTitle}>{title}</h1>
+      <h1 className={styles.movieTitle}>{title ?? name}</h1>
       {original_language != "en" && (
         <h3 className={styles.originalTitle}>
-          Original Title: {original_title}
+          Original Title: {original_title ?? original_name}
         </h3>
       )}
       {tagline && params?.id && <i className={styles.tagLine}>"{tagline}"</i>}
@@ -75,6 +78,12 @@ const FeaturedMovie = ({
           <div>
             <strong>Release Date: </strong>
             <span>{release_date?.split("-")?.reverse()?.join("-")}</span>
+          </div>
+        )}
+        {first_air_date && (
+          <div>
+            <strong>First Air Date: </strong>
+            <span>{first_air_date?.split("-")?.reverse()?.join("-")}</span>
           </div>
         )}
         {vote_count > 0 && (
