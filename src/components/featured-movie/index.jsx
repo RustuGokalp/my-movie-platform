@@ -117,7 +117,10 @@ const FeaturedMovie = ({
       </div>
       <div className={styles.actionButtons}>
         {!params.id && (
-          <Link className={styles.goToDetailButton} href={`/movie/${movie.id}`}>
+          <Link
+            className={styles.goToDetailButton}
+            href={`/${movie?.title ? "movie" : "serie"}/${movie?.id}`}
+          >
             Go To Detail
           </Link>
         )}
