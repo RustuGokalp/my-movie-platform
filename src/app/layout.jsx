@@ -1,4 +1,4 @@
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 
 import "@/src/styles/reset.css";
 import "@/src/styles/global.css";
