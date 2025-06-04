@@ -86,9 +86,11 @@ const createSession = async (requestToken) => {
     });
     const accountId = accountResponse.data.id;
 
-    const { setAccountID, setSessionID } = useAuthStore.getState();
+    const { setAccountID, setSessionID, setIsLoggedIn } =
+      useAuthStore.getState();
     setAccountID(accountId);
     setSessionID(sessionId);
+    setIsLoggedIn(true);
 
     return { sessionId, accountId };
   } catch (error) {
@@ -126,9 +128,11 @@ const deleteSession = async (sessionId) => {
       },
     });
 
-    const { setAccountID, setSessionID } = useAuthStore.getState();
+    const { setAccountID, setSessionID, setIsLoggedIn } =
+      useAuthStore.getState();
     setAccountID(null);
     setSessionID(null);
+    setIsLoggedIn(false);
     localStorage.removeItem("auth-storage");
 
     return response.data;
